@@ -1,0 +1,32 @@
+=========================================================
+NEXUS ENTERPRISE SOFTWARE INC. - DELEGATION OF AUTHORITY (DOA) 
+& DISCOUNT APPROVAL POLICY
+Effective Date: January 1, 2026
+Classification: STRICTLY CONFIDENTIAL - LEGAL & FINANCE
+=========================================================
+
+1. PURPOSE & SCOPE
+This policy governs the authority levels required to approve commercial discounts, non-standard payment terms, and custom legal clauses for all enterprise software agreements.
+
+2. DISCOUNT APPROVAL MATRIX (OFF LIST PRICE)
+---------------------------------------------------------
+- Tier 1 (0% to 15% Discount):
+  * Approval Authority: Account Executive / Sales Director
+  * Condition: Must maintain minimum allowable margins defined in the Global SKU Pricing Matrix.
+
+- Tier 2 (16% to 25% Discount):
+  * Approval Authority: Vice President of Global Sales
+  * Condition: Requires written justification attached to the CRM deal record outlining competitive pressure or strategic account potential.
+
+- Tier 3 (26% to 35% Discount):
+  * Approval Authority: Chief Revenue Officer (CRO) AND Chief Financial Officer (CFO)
+  * Condition: Requires formal financial review to ensure account lifetime value offsets margin reduction.
+
+- Tier 4 (Exceeding 35% Discount):
+  * Approval Authority: Executive Board Review
+  * Condition: Strictly prohibited without prior board sign-off.
+
+3. NON-STANDARD COMMERCIAL TERMS
+---------------------------------------------------------
+- Payment Terms: Standard terms are Net-30. Any request for Net-60 or quarterly installments requires sign-off from the Finance Operations Lead.
+- Liability Caps: Standard liability is capped at 12 months trailing revenue. Any unlimited liability or caps exceeding 2x contract value require direct Legal Counsel approval.

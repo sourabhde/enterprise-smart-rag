@@ -1,0 +1,16 @@
+Product Overview: Enterprise Workflow Automation Suite (EWAS)
+
+1. Core Architecture and Data Ingestion
+The Enterprise Workflow Automation Suite (EWAS) is designed to capture, process, and optimize complex operational workflows across distributed enterprise systems. EWAS utilizes a hybrid ingestion engine that combines real-time event streaming with batch data lakes. Data is chunked using semantic token boundaries to ensure optimal context preservation for downstream large language model (LLM) pipelines.
+
+2. Retrieval-Augmented Generation (RAG) and Guardrails
+To prevent hallucinations in high-stakes enterprise environments, EWAS incorporates a dual-layer guardrail system. The first layer blocks prompt injections and out-of-domain queries at the gateway. The second layer uses an automated 'Faithfulness Check' (powered by an LLM-as-a-judge metric) to verify that every generated response maps directly back to retrieved vector chunks in the ChromaDB vector store.
+
+3. Latency Service Level Objectives (SLOs)
+Performance is critical for real-time user interactions. EWAS maintains strict latency SLOs:
+- Retrieval Latency: Under 150 milliseconds for similarity searches across 100,000 document vectors using normalized cosine distance metrics.
+- Generation Latency: Under 800 milliseconds for time-to-first-token using optimized cloud-hosted inference models.
+- Total Round-Trip Time: Guaranteed under 1 second for standard queries.
+
+4. Feedback Loops and Continuous Improvement
+EWAS captures end-user feedback via binary ratings (thumbs up/down) embedded directly into the UI interface. These feedback logs are aggregated into a local SQLite data store to fine-tune future chunking overlap parameters and improve semantic vector embedding accuracy over time.

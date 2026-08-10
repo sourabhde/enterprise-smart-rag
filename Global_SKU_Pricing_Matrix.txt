@@ -1,0 +1,40 @@
+=========================================================
+NEXUS ENTERPRISE SOFTWARE INC. - GLOBAL SKU & PRICING MATRIX
+Effective Date: Q3 2026
+Classification: INTERNAL / CONFIDENTIAL
+=========================================================
+
+1. CORE PLATFORM SUBSCRIPTION TIERS (Annual Billing)
+---------------------------------------------------------
+- SKU: NEX-ENTERPRISE-BASE
+  Description: Core Cloud Platform License (Up to 500 active users)
+  List Price (USD): $50,000 / year
+  Minimum Allowable Margin: 75%
+
+- SKU: NEX-ENTERPRISE-PRO
+  Description: Advanced Cloud Platform License (Up to 2,000 active users + Advanced Analytics)
+  List Price (USD): $120,000 / year
+  Minimum Allowable Margin: 70%
+
+- SKU: NEX-ENTERPRISE-ULTIMATE
+  Description: Global Multi-Region Deployment + Dedicated Support + Custom Connectors
+  List Price (USD): $250,000 / year
+  Minimum Allowable Margin: 65%
+
+2. ADD-ON MODULES & PROFESSIONAL SERVICES
+---------------------------------------------------------
+- SKU: ADD-AI-COGNITIVE-PACK
+  Description: Enterprise AI & RAG Orchestration Module
+  List Price (USD): $35,000 / year
+  Minimum Allowable Margin: 60%
+
+- SKU: SERV-PROMO-ONBOARDING
+  Description: White-glove implementation and data migration package (One-time)
+  List Price (USD): $20,000 flat
+  Minimum Allowable Margin: 50%
+
+3. VOLUME DISCOUNT THRESHOLDS (Max Base Discount)
+---------------------------------------------------------
+- 1 to 2-year commitment: Standard pricing applies (0% volume discount)
+- 3-year upfront commitment: Maximum 10% volume discount allowed on base SKUs
+- 5-year upfront commitment: Maximum 18% volume discount allowed on base SKUs
