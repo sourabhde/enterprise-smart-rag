@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 import time
+import re
 from dotenv import load_dotenv
 from groq import Groq
 import pypdf
@@ -67,6 +68,16 @@ def semantic_chunk_text(file_text, model):
         chunks.append(". ".join(current_chunk) + ".")
         
     return [c.strip() for c in chunks if c.strip()]
+
+# --- APPLICATION-SIDE OUTPUT SANITIZATION ---
+def clean_llm_output(text):
+    if not text:
+        return text
+    # Fix corrupted artifacts such as stray letters attached to percentages or currency
+    text = re.sub(r'a(\d+)', r'\1%', text)
+    # Fix spacing issues in large numbers like "1, 000" -> "1,000"
+    text = re.sub(r'(\d),\s+(\d)', r'\1,\2', text)
+    return text
 
 # Custom Styling for Professional Enterprise SaaS Typography & Polish
 st.markdown("""
@@ -478,7 +489,9 @@ Retrieved Context Chunks:
                 temperature=0.1,
                 max_tokens=500
             )
-            answer = completion.choices[0].message.content
+            raw_answer = completion.choices[0].message.content
+            answer = clean_llm_output(raw_answer)
+            
             st.session_state.pillar_states["llm"] = {"metric": "Llama-3.3-70b", "health": "🟢 Connected"}
             st.session_state.pillar_states["guardrails"] = {"metric": "Passed Compliance", "health": "🟢 Secure"}
         else:
