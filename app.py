@@ -22,7 +22,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Load lightweight embedding model with error safety
+# Load lightweight embedding model
 @st.cache_resource
 def load_embedding_model():
     try:
@@ -154,7 +154,7 @@ if "last_latency" not in st.session_state:
 if "last_eval_score" not in st.session_state:
     st.session_state.last_eval_score = 99.4
 
-# Initialize dynamic pipeline health states
+# Initialize dynamic pipeline health states for the 8 pillars
 if "pillar_states" not in st.session_state:
     st.session_state.pillar_states = {
         "ingestion": {"metric": "0% Parsed", "health": "⚪ Standby"},
@@ -200,7 +200,6 @@ with st.sidebar:
             if not file_text.strip():
                 file_text = f"Uploaded file content from {file.name}"
             
-            # Dynamic Pillar 2 Check: Chunking execution
             try:
                 chunks = semantic_chunk_text(file_text, embed_model) if embed_model else [file_text]
             except Exception:
@@ -222,7 +221,6 @@ with st.sidebar:
             st.session_state.vector_store = pd.DataFrame(all_chunks)
             total_chunks = len(st.session_state.vector_store)
             
-            # Update live metrics for Pillars 1, 2, 3, 4
             parsed_status = "🟢 Optimal" if parsing_errors == 0 else "🟡 Partial Warnings"
             st.session_state.pillar_states["ingestion"] = {"metric": f"{len(uploaded_files)} File(s) Parsed", "health": parsed_status}
             st.session_state.pillar_states["chunking"] = {"metric": f"{total_chunks} Chunks", "health": "🟢 Active"}
@@ -389,19 +387,25 @@ if user_query:
     answer = ""
     retrieved_text = ""
     sources_used = 0
-    used_rag = false if False else False # safely initialize flag
+    used_rag = False
     
     if len(st.session_state.vector_store) > 0:
         st.session_state.vector_store['accessed'] = False
         st.session_state.vector_store['similarity_score'] = 0.0
 
+    # Dynamic Execution Mode Handling & System Instructions
     should_run_rag = False
     if execution_mode == "Private":
         should_run_rag = True
-    elif execution_mode == "Auto" and len(st.session_state.vector_store) > 0:
-        should_run_rag = True
+        system_context_instruction = "You are a strict compliance AI assistant operating in PRIVATE mode. You MUST answer the user's question accurately using ONLY the retrieved internal context chunks below. If the answer is not present in the context, state that you cannot find the answer and do not use outside knowledge."
+    elif execution_mode == "Auto":
+        should_run_rag = len(st.session_state.vector_store) > 0
+        system_context_instruction = "You are an Enterprise Smart RAG assistant operating in AUTO mode. Use retrieved context chunks if available to ground your answer."
+    else:  # General Mode
+        should_run_rag = False
+        system_context_instruction = "You are a helpful, professional enterprise AI assistant operating in GENERAL mode. Answer using your general knowledge freely without requiring internal document context."
 
-    # Pillar 5 & 6 Dynamic Tracking
+    # Pillar 5 & 6 Dynamic Tracking (Hybrid Retrieval & Re-ranking)
     if client and should_run_rag and len(st.session_state.vector_store) > 0:
         try:
             st.session_state.pillar_states["retrieval"] = {"metric": "Vector + Keyword", "health": "🟡 Searching..."}
@@ -437,6 +441,9 @@ if user_query:
         except Exception as e:
             st.session_state.pillar_states["retrieval"] = {"metric": "Retrieval Exception", "health": "🔴 Error"}
             st.session_state.pillar_states["rerank"] = {"metric": "Failed", "health": "🔴 Error"}
+    elif execution_mode == "General":
+        st.session_state.pillar_states["retrieval"] = {"metric": "Bypassed (General)", "health": "⚪ Standby"}
+        st.session_state.pillar_states["rerank"] = {"metric": "Bypassed (General)", "health": "⚪ Standby"}
 
     snapshot_data = []
     if len(st.session_state.vector_store) > 0:
@@ -454,13 +461,13 @@ if user_query:
         if client:
             st.session_state.pillar_states["llm"] = {"metric": "Llama-3.3-70b", "health": "🟡 Generating..."}
             if used_rag and retrieved_text:
-                system_prompt = f"""You are a precise Enterprise Smart RAG assistant. Answer the user's question accurately using ONLY the retrieved internal context chunks below. Follow strict analytical reasoning: extract list prices, evaluate volume discounts against commitment terms, compute the final exact pricing when requested, and cite the correct approval authority.
+                system_prompt = f"""{system_context_instruction}
 
 Retrieved Context Chunks:
 {retrieved_text}
 """
             else:
-                system_prompt = "You are a helpful, professional enterprise AI assistant."
+                system_prompt = system_context_instruction
 
             completion = client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
