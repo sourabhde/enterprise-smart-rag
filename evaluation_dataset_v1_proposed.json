@@ -1,0 +1,1196 @@
+{
+  "schema_version": "atlasiq_v1_gold_proposed",
+  "status": "PROPOSED_NOT_FROZEN",
+  "corpus_status": "FREEZE",
+  "independent_review_required": true,
+  "independent_reviewer": "Grok",
+  "case_count": 51,
+  "coverage_notes": {
+    "conflict_detection": "OUT_OF_SCOPE \u2014 corpus has no intentional contradictions for same entity",
+    "clarify_mode": "NOT_IMPLEMENTED \u2014 underspecified questions expect abstain"
+  },
+  "cases": [
+    {
+      "id": "v1_case_001",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "sibling_discrimination",
+        "citation"
+      ],
+      "question": "What is the annual base platform subscription fee for Module 1?",
+      "expected_answer": "The base platform subscription for Module 1 is $36,500 per year.",
+      "key_facts": [
+        "$36,500"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_01.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_01.md",
+      "expected_context": "Base Platform Subscription: $36,500 / year."
+    },
+    {
+      "id": "v1_case_002",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "How many named user seats are included with Module 1, and what is the cost of each additional seat?",
+      "expected_answer": "Module 1 includes 25 named users. Additional seats are billed at $1050 per user/year.",
+      "key_facts": [
+        "25",
+        "$1050"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_01.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_01.md"
+    },
+    {
+      "id": "v1_case_003",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "sibling_discrimination",
+        "citation"
+      ],
+      "question": "What is the annual base platform subscription fee for Module 8?",
+      "expected_answer": "The base platform subscription for Module 8 is $47,000 per year.",
+      "key_facts": [
+        "$47,000"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_08.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_08.md",
+      "expected_context": "Base Platform Subscription: $47,000 / year."
+    },
+    {
+      "id": "v1_case_004",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "How many named user seats are included with Module 8, and what is the cost of each additional seat?",
+      "expected_answer": "Module 8 includes 25 named users. Additional seats are billed at $1400 per user/year.",
+      "key_facts": [
+        "25",
+        "$1400"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_08.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_08.md"
+    },
+    {
+      "id": "v1_case_005",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "sibling_discrimination",
+        "citation"
+      ],
+      "question": "What is the annual base platform subscription fee for Module 10?",
+      "expected_answer": "The base platform subscription for Module 10 is $50,000 per year.",
+      "key_facts": [
+        "$50,000"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_10.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_10.md",
+      "expected_context": "Base Platform Subscription: $50,000 / year."
+    },
+    {
+      "id": "v1_case_006",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "How many named user seats are included with Module 10, and what is the cost of each additional seat?",
+      "expected_answer": "Module 10 includes 25 named users. Additional seats are billed at $1500 per user/year.",
+      "key_facts": [
+        "25",
+        "$1500"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_10.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_10.md"
+    },
+    {
+      "id": "v1_case_007",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "sibling_discrimination",
+        "citation"
+      ],
+      "question": "What is the annual base platform subscription fee for Module 11?",
+      "expected_answer": "The base platform subscription for Module 11 is $51,500 per year.",
+      "key_facts": [
+        "$51,500"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_11.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_11.md",
+      "expected_context": "Base Platform Subscription: $51,500 / year."
+    },
+    {
+      "id": "v1_case_008",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "How many named user seats are included with Module 11, and what is the cost of each additional seat?",
+      "expected_answer": "Module 11 includes 25 named users. Additional seats are billed at $1550 per user/year.",
+      "key_facts": [
+        "25",
+        "$1550"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_11.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_11.md"
+    },
+    {
+      "id": "v1_case_009",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "sibling_discrimination",
+        "citation"
+      ],
+      "question": "What is the annual base platform subscription fee for Module 12?",
+      "expected_answer": "The base platform subscription for Module 12 is $53,000 per year.",
+      "key_facts": [
+        "$53,000"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_12.md",
+      "expected_context": "Base Platform Subscription: $53,000 / year."
+    },
+    {
+      "id": "v1_case_010",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "How many named user seats are included with Module 12, and what is the cost of each additional seat?",
+      "expected_answer": "Module 12 includes 25 named users. Additional seats are billed at $1600 per user/year.",
+      "key_facts": [
+        "25",
+        "$1600"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_12.md"
+    },
+    {
+      "id": "v1_case_011",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "sibling_discrimination",
+        "citation"
+      ],
+      "question": "What is the annual base platform subscription fee for Module 13?",
+      "expected_answer": "The base platform subscription for Module 13 is $54,500 per year.",
+      "key_facts": [
+        "$54,500"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_13.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_13.md",
+      "expected_context": "Base Platform Subscription: $54,500 / year."
+    },
+    {
+      "id": "v1_case_012",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "How many named user seats are included with Module 13, and what is the cost of each additional seat?",
+      "expected_answer": "Module 13 includes 25 named users. Additional seats are billed at $1650 per user/year.",
+      "key_facts": [
+        "25",
+        "$1650"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_13.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_13.md"
+    },
+    {
+      "id": "v1_case_013",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "sibling_discrimination",
+        "citation"
+      ],
+      "question": "What is the annual base platform subscription fee for Module 17?",
+      "expected_answer": "The base platform subscription for Module 17 is $60,500 per year.",
+      "key_facts": [
+        "$60,500"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_17.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_17.md",
+      "expected_context": "Base Platform Subscription: $60,500 / year."
+    },
+    {
+      "id": "v1_case_014",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "How many named user seats are included with Module 17, and what is the cost of each additional seat?",
+      "expected_answer": "Module 17 includes 25 named users. Additional seats are billed at $1850 per user/year.",
+      "key_facts": [
+        "25",
+        "$1850"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_17.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_17.md"
+    },
+    {
+      "id": "v1_case_015",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "policy",
+        "citation",
+        "sibling_discrimination"
+      ],
+      "question": "What is the maximum discretionary discount an Account Executive can approve under Framework 4?",
+      "expected_answer": "Under Framework 4, an Account Executive may approve up to 9% off list price.",
+      "key_facts": [
+        "9%"
+      ],
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_04.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/policies/discount_matrix_policy_04.md"
+    },
+    {
+      "id": "v1_case_016",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "policy",
+        "citation"
+      ],
+      "question": "What discount range can a Regional Sales Director approve under Framework 4, and what documentation is required?",
+      "expected_answer": "Under Framework 4, a Regional Sales Director may approve discounts between 10% and 22%, and a signed justification memo is required.",
+      "key_facts": [
+        "10%",
+        "22%",
+        "signed justification memo"
+      ],
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_04.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/policies/discount_matrix_policy_04.md"
+    },
+    {
+      "id": "v1_case_017",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "policy",
+        "citation",
+        "sibling_discrimination"
+      ],
+      "question": "What is the maximum discretionary discount an Account Executive can approve under Framework 10?",
+      "expected_answer": "Under Framework 10, an Account Executive may approve up to 9% off list price.",
+      "key_facts": [
+        "9%"
+      ],
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_10.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/policies/discount_matrix_policy_10.md"
+    },
+    {
+      "id": "v1_case_018",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "policy",
+        "citation"
+      ],
+      "question": "What discount range can a Regional Sales Director approve under Framework 10, and what documentation is required?",
+      "expected_answer": "Under Framework 10, a Regional Sales Director may approve discounts between 10% and 18%, and a signed justification memo is required.",
+      "key_facts": [
+        "10%",
+        "18%",
+        "signed justification memo"
+      ],
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_10.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/policies/discount_matrix_policy_10.md"
+    },
+    {
+      "id": "v1_case_019",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "policy",
+        "citation",
+        "sibling_discrimination"
+      ],
+      "question": "What is the maximum discretionary discount an Account Executive can approve under Framework 16?",
+      "expected_answer": "Under Framework 16, an Account Executive may approve up to 9% off list price.",
+      "key_facts": [
+        "9%"
+      ],
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_16.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/policies/discount_matrix_policy_16.md"
+    },
+    {
+      "id": "v1_case_020",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "policy",
+        "citation"
+      ],
+      "question": "What discount range can a Regional Sales Director approve under Framework 16, and what documentation is required?",
+      "expected_answer": "Under Framework 16, a Regional Sales Director may approve discounts between 10% and 19%, and a signed justification memo is required.",
+      "key_facts": [
+        "10%",
+        "19%",
+        "signed justification memo"
+      ],
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_16.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/policies/discount_matrix_policy_16.md"
+    },
+    {
+      "id": "v1_case_021",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "legal",
+        "citation",
+        "sibling_discrimination"
+      ],
+      "question": "What is the committed monthly uptime availability percentage for production workloads in Region 01?",
+      "expected_answer": "Region 01 commits to 99.10% monthly uptime availability for production workloads.",
+      "key_facts": [
+        "99.10%"
+      ],
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/legal/sla_agreement_region_01.md"
+    },
+    {
+      "id": "v1_case_022",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "legal",
+        "citation",
+        "sibling_discrimination"
+      ],
+      "question": "What is the committed monthly uptime availability percentage for production workloads in Region 07?",
+      "expected_answer": "Region 07 commits to 99.16% monthly uptime availability for production workloads.",
+      "key_facts": [
+        "99.16%"
+      ],
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_07.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/legal/sla_agreement_region_07.md"
+    },
+    {
+      "id": "v1_case_023",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "legal",
+        "citation",
+        "sibling_discrimination"
+      ],
+      "question": "What is the committed monthly uptime availability percentage for production workloads in Region 17?",
+      "expected_answer": "Region 17 commits to 99.17% monthly uptime availability for production workloads.",
+      "key_facts": [
+        "99.17%"
+      ],
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_17.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/legal/sla_agreement_region_17.md"
+    },
+    {
+      "id": "v1_case_024",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "legal",
+        "citation"
+      ],
+      "question": "What is the aggregate liability cap for Region 01 contracts?",
+      "expected_answer": "Aggregate liability for Region 01 contracts is capped at 100% of fees paid during the preceding twelve months.",
+      "key_facts": [
+        "100%"
+      ],
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/legal/sla_agreement_region_01.md"
+    },
+    {
+      "id": "v1_case_025",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "legal",
+        "citation"
+      ],
+      "question": "If availability in Region 01 drops below 95.0%, what credit and remedy apply?",
+      "expected_answer": "Availability below 95.0% yields a 50% credit of monthly MRR plus termination rights.",
+      "key_facts": [
+        "95.0%",
+        "50%",
+        "termination rights"
+      ],
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/legal/sla_agreement_region_01.md"
+    },
+    {
+      "id": "v1_case_026",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_free",
+        "ambiguous",
+        "numeric",
+        "citation"
+      ],
+      "question": "What is the per-request price for Volume API Tier 2 (15M\u201350M calls/month)?",
+      "expected_answer": "Volume API Tier 2 (15M\u201350M calls/mo) is billed at $0.00012 per request.",
+      "key_facts": [
+        "$0.00012"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_01.md",
+        "corpus/skus/product_tier_02.md",
+        "corpus/skus/product_tier_03.md",
+        "corpus/skus/product_tier_04.md",
+        "corpus/skus/product_tier_05.md",
+        "corpus/skus/product_tier_06.md",
+        "corpus/skus/product_tier_07.md",
+        "corpus/skus/product_tier_08.md",
+        "corpus/skus/product_tier_09.md",
+        "corpus/skus/product_tier_10.md",
+        "corpus/skus/product_tier_11.md",
+        "corpus/skus/product_tier_12.md",
+        "corpus/skus/product_tier_13.md",
+        "corpus/skus/product_tier_14.md",
+        "corpus/skus/product_tier_15.md",
+        "corpus/skus/product_tier_16.md",
+        "corpus/skus/product_tier_17.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_01.md",
+      "notes": "Identical Tier 2 rate across all SKU modules; any SKU source is acceptable."
+    },
+    {
+      "id": "v1_case_027",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_free",
+        "ambiguous",
+        "numeric",
+        "citation"
+      ],
+      "question": "What TCV reduction applies to a 36-month multi-year commitment, and what is the standard renewal inflation cap?",
+      "expected_answer": "A 36-month multi-year commitment qualifies for a 12% TCV reduction, and automatic annual renewal has a 4% inflation adjustment cap.",
+      "key_facts": [
+        "12%",
+        "4%"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_01.md",
+        "corpus/skus/product_tier_02.md",
+        "corpus/skus/product_tier_03.md",
+        "corpus/skus/product_tier_04.md",
+        "corpus/skus/product_tier_05.md",
+        "corpus/skus/product_tier_06.md",
+        "corpus/skus/product_tier_07.md",
+        "corpus/skus/product_tier_08.md",
+        "corpus/skus/product_tier_09.md",
+        "corpus/skus/product_tier_10.md",
+        "corpus/skus/product_tier_11.md",
+        "corpus/skus/product_tier_12.md",
+        "corpus/skus/product_tier_13.md",
+        "corpus/skus/product_tier_14.md",
+        "corpus/skus/product_tier_15.md",
+        "corpus/skus/product_tier_16.md",
+        "corpus/skus/product_tier_17.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_01.md",
+      "notes": "Shared contractual boilerplate across all SKU docs."
+    },
+    {
+      "id": "v1_case_028",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_free",
+        "ambiguous",
+        "policy",
+        "citation"
+      ],
+      "question": "What is the consequence of failing to log discount rationales in the CPQ audit ledger within 24 hours?",
+      "expected_answer": "Failure to log discount rationales in the CPQ audit ledger within 24 hours results in commission forfeiture for the deal cycle.",
+      "key_facts": [
+        "24 hours",
+        "commission forfeiture"
+      ],
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_01.md",
+        "corpus/policies/discount_matrix_policy_02.md",
+        "corpus/policies/discount_matrix_policy_03.md",
+        "corpus/policies/discount_matrix_policy_04.md",
+        "corpus/policies/discount_matrix_policy_05.md",
+        "corpus/policies/discount_matrix_policy_06.md",
+        "corpus/policies/discount_matrix_policy_07.md",
+        "corpus/policies/discount_matrix_policy_08.md",
+        "corpus/policies/discount_matrix_policy_09.md",
+        "corpus/policies/discount_matrix_policy_10.md",
+        "corpus/policies/discount_matrix_policy_11.md",
+        "corpus/policies/discount_matrix_policy_12.md",
+        "corpus/policies/discount_matrix_policy_13.md",
+        "corpus/policies/discount_matrix_policy_14.md",
+        "corpus/policies/discount_matrix_policy_15.md",
+        "corpus/policies/discount_matrix_policy_16.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/policies/discount_matrix_policy_01.md"
+    },
+    {
+      "id": "v1_case_029",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "wrong_entity",
+        "adversarial_premise",
+        "numeric",
+        "citation"
+      ],
+      "question": "Is the annual base subscription for Module 12 equal to $47,000?",
+      "expected_answer": "No. Module 12 base platform subscription is $53,000 per year, not $47,000.",
+      "key_facts": [
+        "$53,000"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "correct_premise",
+      "source": "corpus/skus/product_tier_12.md",
+      "notes": "False premise uses Module 8 price $47,000."
+    },
+    {
+      "id": "v1_case_030",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "wrong_entity",
+        "adversarial_premise",
+        "numeric",
+        "citation"
+      ],
+      "question": "Under Framework 10, can an Account Executive approve up to 9% off list?",
+      "expected_answer": "No. Under Framework 10 the Account Executive maximum discretionary discount is 9%, not 9%.",
+      "key_facts": [
+        "9%"
+      ],
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_10.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "correct_premise",
+      "source": "corpus/policies/discount_matrix_policy_10.md"
+    },
+    {
+      "id": "v1_case_031",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "sibling_discrimination",
+        "wrong_entity",
+        "numeric",
+        "citation"
+      ],
+      "question": "What is the additional named-user seat price for Module 12?",
+      "expected_answer": "Additional seats for Module 12 are billed at $1600 per user/year.",
+      "key_facts": [
+        "$1600"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_12.md",
+      "notes": "Only Module 12 source acceptable; siblings have different add-seat prices."
+    },
+    {
+      "id": "v1_case_032",
+      "type": [
+        "true_negative",
+        "unsupported",
+        "abstention",
+        "negative",
+        "evidence_insufficiency"
+      ],
+      "question": "What is Acme Corporation\u2019s privately negotiated Module 12 price for FY2024?",
+      "expected_answer": null,
+      "key_facts": [],
+      "acceptable_sources": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "source": null,
+      "notes": "Customer-specific price absent."
+    },
+    {
+      "id": "v1_case_033",
+      "type": [
+        "true_negative",
+        "unsupported",
+        "abstention",
+        "negative",
+        "evidence_insufficiency"
+      ],
+      "question": "What discount can an Account Executive approve under Framework 99?",
+      "expected_answer": null,
+      "key_facts": [],
+      "acceptable_sources": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "source": null,
+      "notes": "Framework 99 absent (1\u201316 only)."
+    },
+    {
+      "id": "v1_case_034",
+      "type": [
+        "true_negative",
+        "unsupported",
+        "abstention",
+        "negative",
+        "evidence_insufficiency"
+      ],
+      "question": "What is the committed uptime for Region 42?",
+      "expected_answer": null,
+      "key_facts": [],
+      "acceptable_sources": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "source": null,
+      "notes": "Region 42 absent (1\u201317 only)."
+    },
+    {
+      "id": "v1_case_035",
+      "type": [
+        "true_negative",
+        "unsupported",
+        "abstention",
+        "negative",
+        "evidence_insufficiency"
+      ],
+      "question": "Summarize our GDPR data-residency commitments for EU customers.",
+      "expected_answer": null,
+      "key_facts": [],
+      "acceptable_sources": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "source": null,
+      "notes": "No GDPR docs."
+    },
+    {
+      "id": "v1_case_036",
+      "type": [
+        "true_negative",
+        "unsupported",
+        "abstention",
+        "negative",
+        "evidence_insufficiency"
+      ],
+      "question": "What is the list price for the AtlasIQ mobile add-on SKU?",
+      "expected_answer": null,
+      "key_facts": [],
+      "acceptable_sources": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "source": null,
+      "notes": "Mobile add-on SKU absent."
+    },
+    {
+      "id": "v1_case_037",
+      "type": [
+        "ambiguous",
+        "abstention",
+        "identifier_free",
+        "evidence_insufficiency"
+      ],
+      "question": "What is the base platform subscription cost?",
+      "expected_answer": null,
+      "key_facts": [],
+      "acceptable_sources": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "source": null,
+      "notes": "17 different bases; no Module ID. Product has no clarify mode \u2192 abstain."
+    },
+    {
+      "id": "v1_case_038",
+      "type": [
+        "ambiguous",
+        "abstention",
+        "identifier_free",
+        "evidence_insufficiency",
+        "policy"
+      ],
+      "question": "What is the maximum AE discretionary discount?",
+      "expected_answer": null,
+      "key_facts": [],
+      "acceptable_sources": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "source": null,
+      "notes": "AE caps differ by Framework; underspecified \u2192 abstain."
+    },
+    {
+      "id": "v1_case_039",
+      "type": [
+        "answerable",
+        "true_positive",
+        "multi_document",
+        "cross_domain",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "For Module 12 under Framework 10, what is the annual base subscription fee and what is the AE maximum discretionary discount?",
+      "expected_answer": "Module 12 base platform subscription is $53,000 per year. Under Framework 10, an Account Executive may approve up to 9% off list.",
+      "key_facts": [
+        "$53,000",
+        "9%"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md",
+        "corpus/policies/discount_matrix_policy_10.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_12.md",
+      "notes": "Needs SKU + policy evidence."
+    },
+    {
+      "id": "v1_case_040",
+      "type": [
+        "answerable",
+        "true_positive",
+        "multi_document",
+        "cross_domain",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "What uptime does Region 01 commit to, and what is Module 12\u2019s included seat count?",
+      "expected_answer": "Region 01 commits to 99.10% monthly uptime. Module 12 includes 25 named user seats.",
+      "key_facts": [
+        "99.10%",
+        "25"
+      ],
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_01.md",
+        "corpus/skus/product_tier_12.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/legal/sla_agreement_region_01.md"
+    },
+    {
+      "id": "v1_case_041",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "paraphrase",
+        "numeric",
+        "citation"
+      ],
+      "question": "How much does Module 12 cost per year for the base platform license?",
+      "expected_answer": "The base platform subscription for Module 12 is $53,000 per year.",
+      "key_facts": [
+        "$53,000"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_12.md"
+    },
+    {
+      "id": "v1_case_042",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "numeric_precision",
+        "citation"
+      ],
+      "question": "State the exact Region 01 uptime SLA percentage to two decimal places.",
+      "expected_answer": "The Region 01 monthly uptime availability commitment is 99.10%.",
+      "key_facts": [
+        "99.10%"
+      ],
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/legal/sla_agreement_region_01.md"
+    },
+    {
+      "id": "v1_case_043",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "citation",
+        "citation_correctness",
+        "numeric"
+      ],
+      "question": "According to the Module 8 specification, what is the additional seat price?",
+      "expected_answer": "Additional seats for Module 8 are billed at $1400 per user/year.",
+      "key_facts": [
+        "$1400"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_08.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_08.md",
+      "required_citations": [
+        "corpus/skus/product_tier_08.md"
+      ]
+    },
+    {
+      "id": "v1_case_044",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "policy",
+        "numeric",
+        "citation"
+      ],
+      "question": "Under Framework 4, when is Executive Committee (CRO/CEO) review required for discounts?",
+      "expected_answer": "Under Framework 4, Executive Committee review is required for any discount exceeding 30% or containing non-standard indemnification.",
+      "key_facts": [
+        "30%"
+      ],
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_04.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/policies/discount_matrix_policy_04.md"
+    },
+    {
+      "id": "v1_case_045",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "legal",
+        "numeric",
+        "sibling_discrimination",
+        "citation"
+      ],
+      "question": "What monthly uptime percentage does Region 03 guarantee?",
+      "expected_answer": "Region 03 guarantees 99.12% monthly uptime availability.",
+      "key_facts": [
+        "99.12%"
+      ],
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_03.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/legal/sla_agreement_region_03.md"
+    },
+    {
+      "id": "v1_case_046",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "legal",
+        "numeric",
+        "sibling_discrimination",
+        "citation"
+      ],
+      "question": "What monthly uptime percentage does Region 15 guarantee?",
+      "expected_answer": "Region 15 guarantees 99.15% monthly uptime availability.",
+      "key_facts": [
+        "99.15%"
+      ],
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_15.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/legal/sla_agreement_region_15.md"
+    },
+    {
+      "id": "v1_case_047",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "What multi-year discount and renewal inflation cap apply under Module 8?",
+      "expected_answer": "Under Module 8, 36-month commitments qualify for a 12% TCV reduction and renewals have a 4% inflation adjustment cap.",
+      "key_facts": [
+        "12%",
+        "4%"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_08.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_08.md"
+    },
+    {
+      "id": "v1_case_048",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "What multi-year discount and renewal inflation cap apply under Module 13?",
+      "expected_answer": "Under Module 13, 36-month commitments qualify for a 12% TCV reduction and renewals have a 4% inflation adjustment cap.",
+      "key_facts": [
+        "12%",
+        "4%"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_13.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_13.md"
+    },
+    {
+      "id": "v1_case_049",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "What are the Volume API Tier 2 and Tier 3 rules for Module 12?",
+      "expected_answer": "For Module 12, Tier 2 (15M\u201350M calls/mo) is $0.00012 per request; Tier 3 (50M+ calls/mo) requires custom enterprise rider approval.",
+      "key_facts": [
+        "$0.00012",
+        "custom enterprise rider"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_12.md"
+    },
+    {
+      "id": "v1_case_050",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "numeric",
+        "citation"
+      ],
+      "question": "What Volume API Tier 1 entitlement is included in Module 10\u2019s base fee?",
+      "expected_answer": "For Module 10, Tier 1 (0\u201315M calls/mo) is included in the base fee.",
+      "key_facts": [
+        "15M",
+        "included"
+      ],
+      "acceptable_sources": [
+        "corpus/skus/product_tier_10.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/skus/product_tier_10.md"
+    },
+    {
+      "id": "v1_case_051",
+      "type": [
+        "answerable",
+        "true_positive",
+        "identifier_specific",
+        "policy",
+        "numeric",
+        "citation"
+      ],
+      "question": "Under Framework 10, what is the maximum discount a Vice President of Global Sales can approve?",
+      "expected_answer": "Under Framework 10, the Vice President of Global Sales may approve discounts up to 29%.",
+      "key_facts": [
+        "29%"
+      ],
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_10.md"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "source": "corpus/policies/discount_matrix_policy_10.md"
+    }
+  ]
+}

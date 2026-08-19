@@ -1,10 +1,35 @@
 .env
+.env.*
+!.env.example
 __pycache__/
 .DS_Store
 venv/
 
-# Generated vector database
+# Streamlit secrets (use secrets.toml.example as template)
+.streamlit/secrets.toml
+
+# Generated vector database / local indexes
 chroma_db/
 
 # Python virtual environments
 .venv/
+
+# Local caches (answer cache, HF, etc.)
+.cache/
+**/rag_response_cache.json
+**/answer_cache.json
+
+# Accidental local dumps / process listings
+kill
+*.pem
+*.key
+credentials.json
+
+# Evaluation run reports (docs/EVALUATION.md) — keep preferred public artifacts
+eval_results/**
+!eval_results/run_v1_clean_full.json
+!eval_results/run_phase8_challenge_clean_v3.json
+!eval_results/PRODUCTIZATION_REPORT.md
+!eval_results/FINAL_PHASE9_REPORT.md
+!eval_results/V1_PHASE8_FINAL.md
+!eval_results/phase9_ui_pipeline_smoke.json

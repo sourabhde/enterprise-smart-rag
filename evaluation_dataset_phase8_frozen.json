@@ -1,0 +1,1615 @@
+{
+  "status": "FROZEN",
+  "name": "atlasiq_v1_phase8_challenge",
+  "case_count": 57,
+  "adjudication": {
+    "candidate_count": 70,
+    "removed_count": 13,
+    "repaired_count": 8,
+    "removed": [
+      {
+        "id": "p8_case_004",
+        "reason": "Near-duplicate of frozen v1_case_045; 99.12% uptime twin."
+      },
+      {
+        "id": "p8_case_005",
+        "reason": "Near-duplicate of frozen v1_case_031 Module 12 add-seat."
+      },
+      {
+        "id": "p8_case_012",
+        "reason": "FAIL sibling AE 10% (FW5=FW11) and clone of frozen v1_case_015."
+      },
+      {
+        "id": "p8_case_015",
+        "reason": "FAIL sibling uptime 99.11% (Region 02=11)."
+      },
+      {
+        "id": "p8_case_017",
+        "reason": "Near-duplicate of frozen v1_case_013 Module 17 base."
+      },
+      {
+        "id": "p8_case_021",
+        "reason": "Near-duplicate of frozen v1_case_039 Module12+FW10 AE."
+      },
+      {
+        "id": "p8_case_032",
+        "reason": "Near-duplicate of frozen v1_case_030 FW10 AE 12% premise."
+      },
+      {
+        "id": "p8_case_039",
+        "reason": "Near-duplicate of frozen v1_case_035 GDPR."
+      },
+      {
+        "id": "p8_case_041",
+        "reason": "Near-duplicate of frozen v1_case_029 Module 12 $47k premise."
+      },
+      {
+        "id": "p8_case_046",
+        "reason": "Near-duplicate of frozen v1_case_037 underspecified list price."
+      },
+      {
+        "id": "p8_case_052",
+        "reason": "Near-duplicate of frozen v1_case_038 AE max underspecified."
+      },
+      {
+        "id": "p8_case_054",
+        "reason": "FAIL sibling_discrimination on universal 25 seats."
+      },
+      {
+        "id": "p8_case_057",
+        "reason": "Near-duplicate of frozen v1_case_032 Acme customer price."
+      }
+    ],
+    "repaired": [
+      {
+        "id": "p8_case_002",
+        "notes": [
+          "Retargeted from universal 25 seats to unique add-seat price"
+        ]
+      },
+      {
+        "id": "p8_case_007",
+        "notes": [
+          "Added Region 05 to key_facts to reduce shared 100% liability collision"
+        ]
+      },
+      {
+        "id": "p8_case_013",
+        "notes": [
+          "Stripped sibling_discrimination (key facts not document-unique)"
+        ]
+      },
+      {
+        "id": "p8_case_018",
+        "notes": [
+          "Expanded acceptable_sources to all 17 SKUs for shared Tier2 price"
+        ]
+      },
+      {
+        "id": "p8_case_019",
+        "notes": [
+          "Expanded acceptable_sources to all 17 SKUs for shared TCV 12%"
+        ]
+      },
+      {
+        "id": "p8_case_034",
+        "notes": [
+          "Removed false multi_document tag; keep multi_hop arithmetic"
+        ]
+      },
+      {
+        "id": "p8_case_035",
+        "notes": [
+          "Removed unfair SKU dependency; policy-only DoA"
+        ]
+      },
+      {
+        "id": "p8_case_067",
+        "notes": [
+          "Retargeted to in-band breach 99.05% below 99.10% commit"
+        ]
+      }
+    ],
+    "grok_decision": "APPROVE_WITH_EDITS",
+    "integrity_fails_after": []
+  },
+  "cases": [
+    {
+      "id": "p8_case_001",
+      "type": [
+        "answerable",
+        "normal_positive",
+        "identifier_specific",
+        "pricing",
+        "citation",
+        "phase8"
+      ],
+      "question": "What is the base platform subscription for Module 3?",
+      "expected_answer": "Module 3 base platform subscription is $39,500 per year.",
+      "key_facts": [
+        "$39,500"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_03.md"
+      ],
+      "source": "corpus/skus/product_tier_03.md",
+      "rationale": "Straightforward Module 3 list price lookup.",
+      "required_evidence": [
+        "corpus/skus/product_tier_03.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_002",
+      "type": [
+        "answerable",
+        "normal_positive",
+        "identifier_specific",
+        "pricing",
+        "citation",
+        "phase8"
+      ],
+      "question": "What is the additional per-seat annual price for Module 7?",
+      "expected_answer": "Additional Module 7 seats are billed at $1350 per user/year.",
+      "key_facts": [
+        "$1350",
+        "1350"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_07.md"
+      ],
+      "source": "corpus/skus/product_tier_07.md",
+      "rationale": "Seat entitlement for Module 7.",
+      "required_evidence": [
+        "corpus/skus/product_tier_07.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation | ADJUDICATION: Retargeted from universal 25 seats to unique add-seat price"
+    },
+    {
+      "id": "p8_case_003",
+      "type": [
+        "answerable",
+        "normal_positive",
+        "identifier_specific",
+        "policy",
+        "citation",
+        "phase8"
+      ],
+      "question": "Under Framework 2, what is the maximum discretionary discount an Account Executive can approve?",
+      "expected_answer": "Under Framework 2, an Account Executive may approve up to 7% off list price.",
+      "key_facts": [
+        "7%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_02.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_02.md",
+      "rationale": "FW2 AE authority.",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_02.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_006",
+      "type": [
+        "answerable",
+        "normal_positive",
+        "identifier_specific",
+        "policy",
+        "citation",
+        "phase8"
+      ],
+      "question": "Under Framework 8, what is the VP of Global Sales discount authority ceiling?",
+      "expected_answer": "Under Framework 8, the Vice President of Global Sales may approve discounts up to 27%.",
+      "key_facts": [
+        "27%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_08.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_08.md",
+      "rationale": "VP ceiling FW8.",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_08.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_007",
+      "type": [
+        "answerable",
+        "normal_positive",
+        "identifier_specific",
+        "legal",
+        "citation",
+        "phase8"
+      ],
+      "question": "What is the aggregate liability cap for Region 05 contracts?",
+      "expected_answer": "Aggregate liability for Region 05 contracts is capped at 100% of fees paid during the preceding twelve months.",
+      "key_facts": [
+        "100%",
+        "Region 05"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_05.md"
+      ],
+      "source": "corpus/legal/sla_agreement_region_05.md",
+      "rationale": "Liability cap Region 05.",
+      "required_evidence": [
+        "corpus/legal/sla_agreement_region_05.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation | ADJUDICATION: Added Region 05 to key_facts to reduce shared 100% liability collision"
+    },
+    {
+      "id": "p8_case_008",
+      "type": [
+        "answerable",
+        "normal_positive",
+        "identifier_specific",
+        "pricing",
+        "citation",
+        "phase8"
+      ],
+      "question": "What Volume API Tier 2 per-request price applies for Module 8?",
+      "expected_answer": "For Module 8, Volume API Tier 2 is $0.00012 per request.",
+      "key_facts": [
+        "$0.00012",
+        "0.00012"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_08.md"
+      ],
+      "source": "corpus/skus/product_tier_08.md",
+      "rationale": "Tier 2 price Module 8.",
+      "required_evidence": [
+        "corpus/skus/product_tier_08.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_009",
+      "type": [
+        "answerable",
+        "normal_positive",
+        "identifier_specific",
+        "policy",
+        "citation",
+        "phase8"
+      ],
+      "question": "Under Framework 3, what documentation is required when a Regional Sales Director approves a discount?",
+      "expected_answer": "Under Framework 3, Regional Sales Director approvals require a signed justification memo.",
+      "key_facts": [
+        "signed justification memo"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_03.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_03.md",
+      "rationale": "Documentation requirement FW3.",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_03.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_010",
+      "type": [
+        "answerable",
+        "normal_positive",
+        "identifier_specific",
+        "pricing",
+        "citation",
+        "phase8"
+      ],
+      "question": "What TCV reduction applies to a 36-month commitment for Module 15?",
+      "expected_answer": "For Module 15, a 36-month multi-year commitment qualifies for a 12% TCV reduction.",
+      "key_facts": [
+        "12%",
+        "36"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_15.md"
+      ],
+      "source": "corpus/skus/product_tier_15.md",
+      "rationale": "Multi-year TCV Module 15.",
+      "required_evidence": [
+        "corpus/skus/product_tier_15.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_011",
+      "type": [
+        "answerable",
+        "sibling_discrimination",
+        "identifier_specific",
+        "pricing",
+        "citation",
+        "phase8"
+      ],
+      "question": "Is Module 1\u2019s base subscription $36,500 or $53,000?",
+      "expected_answer": "Module 1 base platform subscription is $36,500 per year, not $53,000.",
+      "key_facts": [
+        "$36,500"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_01.md"
+      ],
+      "source": "corpus/skus/product_tier_01.md",
+      "rationale": "Sibling trap vs Module 12 price.",
+      "required_evidence": [
+        "corpus/skus/product_tier_01.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_013",
+      "type": [
+        "answerable",
+        "identifier_specific",
+        "policy",
+        "citation",
+        "phase8"
+      ],
+      "question": "Under Framework 6, what RSD discount band is authorized?",
+      "expected_answer": "Under Framework 6, a Regional Sales Director may approve discounts between 6% and 19%.",
+      "key_facts": [
+        "6%",
+        "19%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_06.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_06.md",
+      "rationale": "FW6 RSD band sibling discrimination.",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_06.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation | ADJUDICATION: Stripped sibling_discrimination (key facts not document-unique)"
+    },
+    {
+      "id": "p8_case_014",
+      "type": [
+        "answerable",
+        "sibling_discrimination",
+        "identifier_specific",
+        "pricing",
+        "citation",
+        "phase8"
+      ],
+      "question": "What is Module 10 base subscription, and how does it differ from Module 12\u2019s $53,000?",
+      "expected_answer": "Module 10 base platform subscription is $50,000 per year (Module 12 is $53,000).",
+      "key_facts": [
+        "$50,000"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_10.md"
+      ],
+      "source": "corpus/skus/product_tier_10.md",
+      "rationale": "Sibling Module 10 vs 12.",
+      "required_evidence": [
+        "corpus/skus/product_tier_10.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_016",
+      "type": [
+        "answerable",
+        "identifier_specific",
+        "policy",
+        "citation",
+        "phase8"
+      ],
+      "question": "Under Framework 1, what is the AE discretionary discount maximum?",
+      "expected_answer": "Under Framework 1, an Account Executive may approve up to 6% off list price.",
+      "key_facts": [
+        "6%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_01.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_01.md",
+      "rationale": "FW1 AE%.",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_01.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_018",
+      "type": [
+        "answerable",
+        "identifier_free",
+        "pricing",
+        "citation",
+        "phase8"
+      ],
+      "question": "What per-request price applies to Volume API Tier 2 for the 15M\u201350M band?",
+      "expected_answer": "Volume API Tier 2 (15M\u201350M calls/mo) is $0.00012 per request across product tiers that publish this band.",
+      "key_facts": [
+        "$0.00012",
+        "0.00012"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_01.md",
+        "corpus/skus/product_tier_02.md",
+        "corpus/skus/product_tier_03.md",
+        "corpus/skus/product_tier_04.md",
+        "corpus/skus/product_tier_05.md",
+        "corpus/skus/product_tier_06.md",
+        "corpus/skus/product_tier_07.md",
+        "corpus/skus/product_tier_08.md",
+        "corpus/skus/product_tier_09.md",
+        "corpus/skus/product_tier_10.md",
+        "corpus/skus/product_tier_11.md",
+        "corpus/skus/product_tier_12.md",
+        "corpus/skus/product_tier_13.md",
+        "corpus/skus/product_tier_14.md",
+        "corpus/skus/product_tier_15.md",
+        "corpus/skus/product_tier_16.md",
+        "corpus/skus/product_tier_17.md"
+      ],
+      "source": "corpus/skus/product_tier_01.md",
+      "rationale": "Identifier-free shared Tier 2 price; multiple SKUs acceptable.",
+      "required_evidence": [
+        "corpus/skus/product_tier_12.md",
+        "corpus/skus/product_tier_10.md",
+        "corpus/skus/product_tier_08.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation | ADJUDICATION: Expanded acceptable_sources to all 17 SKUs for shared Tier2 price"
+    },
+    {
+      "id": "p8_case_019",
+      "type": [
+        "answerable",
+        "identifier_free",
+        "ambiguous",
+        "pricing",
+        "citation",
+        "phase8"
+      ],
+      "question": "What TCV reduction applies to 36-month multi-year commitments in the product suite?",
+      "expected_answer": "A 36-month multi-year commitment qualifies for a 12% total contract value (TCV) reduction.",
+      "key_facts": [
+        "12%",
+        "36"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_01.md",
+        "corpus/skus/product_tier_02.md",
+        "corpus/skus/product_tier_03.md",
+        "corpus/skus/product_tier_04.md",
+        "corpus/skus/product_tier_05.md",
+        "corpus/skus/product_tier_06.md",
+        "corpus/skus/product_tier_07.md",
+        "corpus/skus/product_tier_08.md",
+        "corpus/skus/product_tier_09.md",
+        "corpus/skus/product_tier_10.md",
+        "corpus/skus/product_tier_11.md",
+        "corpus/skus/product_tier_12.md",
+        "corpus/skus/product_tier_13.md",
+        "corpus/skus/product_tier_14.md",
+        "corpus/skus/product_tier_15.md",
+        "corpus/skus/product_tier_16.md",
+        "corpus/skus/product_tier_17.md"
+      ],
+      "source": "corpus/skus/product_tier_01.md",
+      "rationale": "Shared TCV fact across SKUs.",
+      "required_evidence": [
+        "corpus/skus/product_tier_12.md",
+        "corpus/skus/product_tier_10.md",
+        "corpus/skus/product_tier_15.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation | ADJUDICATION: Expanded acceptable_sources to all 17 SKUs for shared TCV 12%"
+    },
+    {
+      "id": "p8_case_020",
+      "type": [
+        "answerable",
+        "sibling_discrimination",
+        "identifier_specific",
+        "pricing",
+        "citation",
+        "phase8"
+      ],
+      "question": "Additional seats for Module 4 are billed at what annual amount per user?",
+      "expected_answer": "Additional Module 4 seats are billed at $1200 per user/year.",
+      "key_facts": [
+        "$1200",
+        "1200"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_04.md"
+      ],
+      "source": "corpus/skus/product_tier_04.md",
+      "rationale": "Module 4 add-on seats.",
+      "required_evidence": [
+        "corpus/skus/product_tier_04.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_022",
+      "type": [
+        "answerable",
+        "multi_document",
+        "cross_domain",
+        "multi_hop",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "Module 10 list price and Region 01 committed uptime \u2014 state both facts.",
+      "expected_answer": "Module 10 base subscription is $50,000/year; Region 01 committed monthly uptime is 99.10%.",
+      "key_facts": [
+        "$50,000",
+        "99.10%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_10.md",
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "source": "corpus/skus/product_tier_10.md",
+      "rationale": "Product+SLA multi-doc.",
+      "required_evidence": [
+        "corpus/skus/product_tier_10.md",
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_023",
+      "type": [
+        "answerable",
+        "multi_document",
+        "cross_domain",
+        "multi_hop",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "Under Framework 4, what is the AE max discount, and what is Region 04\u2019s liability cap percentage?",
+      "expected_answer": "Framework 4 AE max discretionary discount is 9%; Region 04 liability cap is 100% of fees paid in the preceding twelve months.",
+      "key_facts": [
+        "9%",
+        "100%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_04.md",
+        "corpus/legal/sla_agreement_region_04.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_04.md",
+      "rationale": "Policy+SLA.",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_04.md",
+        "corpus/legal/sla_agreement_region_04.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_024",
+      "type": [
+        "answerable",
+        "multi_document",
+        "cross_domain",
+        "multi_hop",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "State Module 12\u2019s base subscription, Framework 10\u2019s Vice President of Global Sales discount ceiling, and Region 01\u2019s committed monthly uptime.",
+      "expected_answer": "Module 12 is $53,000/year; Framework 10 VP Global Sales may approve up to 29%; Region 01 uptime is 99.10%.",
+      "key_facts": [
+        "$53,000",
+        "29%",
+        "99.10%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md",
+        "corpus/policies/discount_matrix_policy_10.md",
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "source": "corpus/skus/product_tier_12.md",
+      "rationale": "Three-domain multi-doc.",
+      "required_evidence": [
+        "corpus/skus/product_tier_12.md",
+        "corpus/policies/discount_matrix_policy_10.md",
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_025",
+      "type": [
+        "answerable",
+        "multi_document",
+        "cross_domain",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "What commission consequence applies under Framework 10 if discount rationales are not logged within 24 hours, and what is Module 12\u2019s inflation renewal cap?",
+      "expected_answer": "Failure to log discount rationales within 24 hours results in commission forfeiture; Module 12 automatic renewal has a 4% inflation adjustment cap.",
+      "key_facts": [
+        "24 hours",
+        "forfeit",
+        "4%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_10.md",
+        "corpus/skus/product_tier_12.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_10.md",
+      "rationale": "Policy audit rule + SKU renewal.",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_10.md",
+        "corpus/skus/product_tier_12.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_026",
+      "type": [
+        "answerable",
+        "multi_document",
+        "cross_domain",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "Region 01 credit for availability below 95.0%, and Module 12 included seats \u2014 report both.",
+      "expected_answer": "Below 95.0% availability in Region 01 yields 50% monthly MRR credit plus termination rights; Module 12 includes 25 named user seats.",
+      "key_facts": [
+        "50%",
+        "25"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_01.md",
+        "corpus/skus/product_tier_12.md"
+      ],
+      "source": "corpus/legal/sla_agreement_region_01.md",
+      "rationale": "SLA credit + SKU seats.",
+      "required_evidence": [
+        "corpus/legal/sla_agreement_region_01.md",
+        "corpus/skus/product_tier_12.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_027",
+      "type": [
+        "answerable",
+        "identifier_specific",
+        "policy",
+        "citation",
+        "phase8"
+      ],
+      "question": "Framework 5 AE max discount and Framework 5 RSD lower/upper band?",
+      "expected_answer": "Framework 5 AE max is 10%; RSD band is 11%\u201318%.",
+      "key_facts": [
+        "10%",
+        "11%",
+        "18%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_05.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_05.md",
+      "rationale": "Single doc actually \u2014 mark as policy depth not multi-doc",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_05.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_028",
+      "type": [
+        "answerable",
+        "multi_document",
+        "cross_domain",
+        "multi_hop",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "If quoting Module 8 under Framework 2 for a Region 02 deployment, what are the list price, AE max discount, and regional uptime commitment?",
+      "expected_answer": "Module 8 list price $47,000/year; Framework 2 AE max 7%; Region 02 uptime 99.11%.",
+      "key_facts": [
+        "$47,000",
+        "7%",
+        "99.11%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_08.md",
+        "corpus/policies/discount_matrix_policy_02.md",
+        "corpus/legal/sla_agreement_region_02.md"
+      ],
+      "source": "corpus/skus/product_tier_08.md",
+      "rationale": "Triple multi-hop quote scenario.",
+      "required_evidence": [
+        "corpus/skus/product_tier_08.md",
+        "corpus/policies/discount_matrix_policy_02.md",
+        "corpus/legal/sla_agreement_region_02.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_029",
+      "type": [
+        "answerable",
+        "multi_document",
+        "cross_domain",
+        "citation",
+        "phase8"
+      ],
+      "question": "What is Module 5\u2019s base subscription and Framework 7\u2019s AE discretionary maximum?",
+      "expected_answer": "Module 5 is $42,500/year; Framework 7 AE max is 6%.",
+      "key_facts": [
+        "$42,500",
+        "6%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_05.md",
+        "corpus/policies/discount_matrix_policy_07.md"
+      ],
+      "source": "corpus/skus/product_tier_05.md",
+      "rationale": "SKU+policy pair.",
+      "required_evidence": [
+        "corpus/skus/product_tier_05.md",
+        "corpus/policies/discount_matrix_policy_07.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_030",
+      "type": [
+        "answerable",
+        "multi_document",
+        "cross_domain",
+        "citation",
+        "phase8"
+      ],
+      "question": "State Region 07 uptime and Module 9 additional-seat annual price.",
+      "expected_answer": "Region 07 uptime 99.16%; Module 9 additional seats $1450/user/year.",
+      "key_facts": [
+        "99.16%",
+        "$1450"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_07.md",
+        "corpus/skus/product_tier_09.md"
+      ],
+      "source": "corpus/legal/sla_agreement_region_07.md",
+      "rationale": "SLA+SKU.",
+      "required_evidence": [
+        "corpus/legal/sla_agreement_region_07.md",
+        "corpus/skus/product_tier_09.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_031",
+      "type": [
+        "answerable",
+        "multi_hop",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "After applying Framework 10\u2019s maximum AE discretionary discount to Module 12\u2019s list price, what is the lowest AE-authorized annual price (before other approvals)?",
+      "expected_answer": "Module 12 list is $53,000; AE may take up to 9% off, so lowest AE-authorized price is $48,230.",
+      "key_facts": [
+        "$53,000",
+        "9%",
+        "$48,230"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md",
+        "corpus/policies/discount_matrix_policy_10.md"
+      ],
+      "source": "corpus/skus/product_tier_12.md",
+      "rationale": "Multi-hop arithmetic from two docs.",
+      "required_evidence": [
+        "corpus/skus/product_tier_12.md",
+        "corpus/policies/discount_matrix_policy_10.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_033",
+      "type": [
+        "answerable",
+        "multi_hop",
+        "identifier_specific",
+        "legal",
+        "citation",
+        "phase8"
+      ],
+      "question": "If Region 01 availability is 97%, which credit tier applies and what % of monthly MRR is credited?",
+      "expected_answer": "97% falls between 95.0% and 98.9%, so the client receives a 30% credit of monthly MRR.",
+      "key_facts": [
+        "30%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "source": "corpus/legal/sla_agreement_region_01.md",
+      "rationale": "Multi-hop within SLA credit table.",
+      "required_evidence": [
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_034",
+      "type": [
+        "answerable",
+        "multi_hop",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "Using Module 12 seats and add-on pricing, what is the annual cost to add 5 seats beyond the included allotment?",
+      "expected_answer": "Additional Module 12 seats are $1,600 each; 5 extra seats cost $8,000/year.",
+      "key_facts": [
+        "$1,600",
+        "$8,000"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "source": "corpus/skus/product_tier_12.md",
+      "rationale": "Arithmetic multi-hop on SKU.",
+      "required_evidence": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation | ADJUDICATION: Removed false multi_document tag; keep multi_hop arithmetic"
+    },
+    {
+      "id": "p8_case_035",
+      "type": [
+        "answerable",
+        "multi_hop",
+        "citation",
+        "phase8",
+        "policy"
+      ],
+      "question": "For a Framework 4 deal, can an AE unilaterally approve an 11% discount? Explain using Framework 4 authorities.",
+      "expected_answer": "No. Framework 4 AE max is 9%; 11% requires Regional Sales Director authority (10%\u201322%) with a signed justification memo.",
+      "key_facts": [
+        "9%",
+        "10%",
+        "22%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_04.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_04.md",
+      "rationale": "Policy authority + product context multi-hop.",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_04.md",
+        "corpus/skus/product_tier_10.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation | ADJUDICATION: Removed unfair SKU dependency; policy-only DoA"
+    },
+    {
+      "id": "p8_case_036",
+      "type": [
+        "true_negative",
+        "unsupported",
+        "wrong_entity",
+        "abstention",
+        "phase8"
+      ],
+      "question": "What is the AE discount authority under Framework 42?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "Framework 42 does not exist.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_037",
+      "type": [
+        "true_negative",
+        "unsupported",
+        "wrong_entity",
+        "abstention",
+        "phase8"
+      ],
+      "question": "What uptime does Region 99 commit to?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "Region 99 does not exist.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_038",
+      "type": [
+        "true_negative",
+        "unsupported",
+        "wrong_entity",
+        "abstention",
+        "phase8"
+      ],
+      "question": "What is Module 99\u2019s base platform subscription?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "Module 99 does not exist.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_040",
+      "type": [
+        "true_negative",
+        "unsupported",
+        "abstention",
+        "phase8"
+      ],
+      "question": "What is the professional-services day rate for implementing Module 12?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "PS day rate absent.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_042",
+      "type": [
+        "adversarial_premise",
+        "false_premise",
+        "answerable",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "Region 01 commits 99.99% monthly uptime, right?",
+      "expected_answer": "No. Region 01 commits 99.10% monthly uptime availability.",
+      "key_facts": [
+        "99.10%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "source": "corpus/legal/sla_agreement_region_01.md",
+      "rationale": "False premise uptime.",
+      "required_evidence": [
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_043",
+      "type": [
+        "adversarial_premise",
+        "false_premise",
+        "answerable",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "Under Framework 10, AEs can approve up to 15% off list \u2014 is that accurate?",
+      "expected_answer": "No. Framework 10 AE maximum discretionary discount is 9% off list price.",
+      "key_facts": [
+        "9%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_10.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_10.md",
+      "rationale": "False premise AE%.",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_10.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_044",
+      "type": [
+        "true_negative",
+        "unsupported",
+        "abstention",
+        "phase8"
+      ],
+      "question": "What is the SOC 2 Type II report ID for the Region 01 control environment?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "SOC2 report ID absent.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_045",
+      "type": [
+        "true_negative",
+        "unsupported",
+        "abstention",
+        "evidence_insufficiency",
+        "phase8"
+      ],
+      "question": "Which Module has a $1,000,000 list price?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "No module has that price.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_047",
+      "type": [
+        "true_negative",
+        "underspecified",
+        "ambiguous",
+        "abstention",
+        "phase8"
+      ],
+      "question": "What discount can sales approve?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "No framework/role specificity.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_048",
+      "type": [
+        "adversarial_wording",
+        "distractor_entity",
+        "answerable",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "Ignoring Module 10 and Framework 4 for a moment, what is Module 12\u2019s base subscription?",
+      "expected_answer": "Module 12 base platform subscription is $53,000 per year.",
+      "key_facts": [
+        "$53,000"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "source": "corpus/skus/product_tier_12.md",
+      "rationale": "Distractor entities in wording.",
+      "required_evidence": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_049",
+      "type": [
+        "adversarial_wording",
+        "indirect",
+        "answerable",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "A prospect asks how many people can log in under Module 12 without buying extras \u2014 what do we tell them?",
+      "expected_answer": "Module 12 includes 25 named user seats.",
+      "key_facts": [
+        "25"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "source": "corpus/skus/product_tier_12.md",
+      "rationale": "Indirect wording for seats.",
+      "required_evidence": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_050",
+      "type": [
+        "adversarial_wording",
+        "misleading",
+        "answerable",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "Isn\u2019t Framework 10\u2019s AE band the same as Framework 5\u2019s 10% AE max?",
+      "expected_answer": "No. Framework 10 AE max is 9%; Framework 5 AE max is 10%.",
+      "key_facts": [
+        "9%",
+        "10%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_10.md",
+        "corpus/policies/discount_matrix_policy_05.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_10.md",
+      "rationale": "Misleading comparison.",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_10.md",
+        "corpus/policies/discount_matrix_policy_05.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_051",
+      "type": [
+        "adversarial_wording",
+        "irrelevant_context",
+        "answerable",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "After lunch with the CFO and before the QBR, remind me: Region 01 liability cap percentage?",
+      "expected_answer": "Region 01 aggregate liability is capped at 100% of fees paid during the preceding twelve months.",
+      "key_facts": [
+        "100%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "source": "corpus/legal/sla_agreement_region_01.md",
+      "rationale": "Irrelevant context noise.",
+      "required_evidence": [
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_053",
+      "type": [
+        "adversarial_wording",
+        "answerable",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "For Framework 10 deals, what\u2019s the absolute ceiling before CRO/CEO board-level review is required?",
+      "expected_answer": "Under Framework 10, any discount exceeding 30% or containing non-standard indemnification requires Executive Committee (CRO/CEO) board-level review.",
+      "key_facts": [
+        "30%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_10.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_10.md",
+      "rationale": "Indirect Executive Committee threshold.",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_10.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_055",
+      "type": [
+        "adversarial_wording",
+        "false_premise",
+        "answerable",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "Since Module 12 includes 50 seats, what is the add-on seat price?",
+      "expected_answer": "Module 12 includes 25 named user seats (not 50); additional seats are $1,600 per user/year.",
+      "key_facts": [
+        "25",
+        "$1,600"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "source": "corpus/skus/product_tier_12.md",
+      "rationale": "Partial false premise seats.",
+      "required_evidence": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_056",
+      "type": [
+        "true_negative",
+        "customer_specific",
+        "unsupported",
+        "abstention",
+        "phase8"
+      ],
+      "question": "What is Globex Corp\u2019s privately negotiated Module 12 price for FY2025?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "Customer-specific negotiated price absent.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_058",
+      "type": [
+        "true_negative",
+        "customer_specific",
+        "unsupported",
+        "abstention",
+        "phase8"
+      ],
+      "question": "What is Initech\u2019s signed MSA liability carve-out for Region 01?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "Customer MSA carve-out absent.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_059",
+      "type": [
+        "true_negative",
+        "customer_specific",
+        "unsupported",
+        "abstention",
+        "phase8"
+      ],
+      "question": "What renewal uplift did Umbrella Industries negotiate on Module 10?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "Customer renewal uplift absent.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_060",
+      "type": [
+        "true_negative",
+        "customer_specific",
+        "unsupported",
+        "abstention",
+        "phase8"
+      ],
+      "question": "Provide Stark Industries\u2019 pre-negotiated Volume API Tier 3 rate card for Module 12.",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "Customer Tier 3 rate card absent.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_061",
+      "type": [
+        "true_negative",
+        "abstention",
+        "impossible_combination",
+        "unsupported",
+        "phase8"
+      ],
+      "question": "What is the joint Module 12 \u00d7 Framework 10 \u00d7 Region 01 pre-approved package SKU code?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "No package SKU code in corpus.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_062",
+      "type": [
+        "true_negative",
+        "abstention",
+        "underspecified",
+        "phase8"
+      ],
+      "question": "Which Framework should I use?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "No decision criteria in corpus.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_063",
+      "type": [
+        "true_negative",
+        "abstention",
+        "unsupported",
+        "phase8"
+      ],
+      "question": "What is the future FY2027 list price for Module 12?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "Future price not published.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_064",
+      "type": [
+        "true_negative",
+        "abstention",
+        "unsupported",
+        "phase8"
+      ],
+      "question": "What Japanese-language uptime wording is officially published for Region 01?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "No Japanese corpus content.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "id": "p8_case_065",
+      "type": [
+        "true_negative",
+        "abstention",
+        "evidence_insufficiency",
+        "phase8"
+      ],
+      "question": "Compare Module 12 vs Salesforce CPQ list pricing side-by-side.",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "External competitor pricing absent.",
+      "required_evidence": [],
+      "notes": "Phase8 candidate \u2014 corpus-grounded adversarial validation"
+    },
+    {
+      "type": [
+        "answerable",
+        "multi_document",
+        "cross_domain",
+        "citation",
+        "phase8"
+      ],
+      "question": "What is Module 2\u2019s base subscription and Framework 1\u2019s AE max discretionary discount?",
+      "expected_answer": "Module 2 is $38,000/year; Framework 1 AE max is 6%.",
+      "key_facts": [
+        "$38,000",
+        "6%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_02.md",
+        "corpus/policies/discount_matrix_policy_01.md"
+      ],
+      "source": "corpus/skus/product_tier_02.md",
+      "rationale": "SKU+policy pair Module2/FW1",
+      "required_evidence": [
+        "corpus/skus/product_tier_02.md",
+        "corpus/policies/discount_matrix_policy_01.md"
+      ],
+      "id": "p8_case_066",
+      "notes": "Phase8 candidate"
+    },
+    {
+      "type": [
+        "answerable",
+        "multi_hop",
+        "legal",
+        "citation",
+        "phase8",
+        "identifier_specific"
+      ],
+      "question": "Region 01 measured availability is 99.05% \u2014 which service-credit percentage of monthly MRR applies?",
+      "expected_answer": "99.05% falls between 99.0% and 99.8% (and is a breach vs 99.10% commitment), so a 15% credit of monthly MRR applies.",
+      "key_facts": [
+        "15%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "source": "corpus/legal/sla_agreement_region_01.md",
+      "rationale": "SLA credit-table multi-hop",
+      "required_evidence": [
+        "corpus/legal/sla_agreement_region_01.md"
+      ],
+      "id": "p8_case_067",
+      "notes": "Phase8 candidate | ADJUDICATION: Retargeted to in-band breach 99.05% below 99.10% commit"
+    },
+    {
+      "type": [
+        "true_negative",
+        "abstention",
+        "unsupported",
+        "phase8"
+      ],
+      "question": "What is the partner margin for Module 12 in the reseller program?",
+      "expected_answer": null,
+      "key_facts": [],
+      "expect_abstention": true,
+      "expected_behavior": "abstain",
+      "acceptable_sources": [],
+      "source": null,
+      "rationale": "Reseller/partner margin absent",
+      "required_evidence": [],
+      "id": "p8_case_068",
+      "notes": "Phase8 candidate"
+    },
+    {
+      "type": [
+        "answerable",
+        "citation",
+        "identifier_specific",
+        "policy",
+        "phase8"
+      ],
+      "question": "Under Framework 16, what is the maximum AE discretionary discount?",
+      "expected_answer": "Under Framework 16, an Account Executive may approve up to 9% off list price.",
+      "key_facts": [
+        "9%"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/policies/discount_matrix_policy_16.md"
+      ],
+      "source": "corpus/policies/discount_matrix_policy_16.md",
+      "rationale": "FW16 AE",
+      "required_evidence": [
+        "corpus/policies/discount_matrix_policy_16.md"
+      ],
+      "id": "p8_case_069",
+      "notes": "Phase8 candidate"
+    },
+    {
+      "type": [
+        "adversarial_wording",
+        "answerable",
+        "identifier_specific",
+        "citation",
+        "phase8"
+      ],
+      "question": "Quick: Module 12 Tier 1 Volume API \u2014 is it included or paid?",
+      "expected_answer": "Module 12 Volume API Tier 1 (0\u201315M calls/mo) is included in the base fee.",
+      "key_facts": [
+        "Tier 1",
+        "included"
+      ],
+      "expect_abstention": false,
+      "expected_behavior": "answer",
+      "acceptable_sources": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "source": "corpus/skus/product_tier_12.md",
+      "rationale": "Short adversarial wording Tier1 included",
+      "required_evidence": [
+        "corpus/skus/product_tier_12.md"
+      ],
+      "id": "p8_case_070",
+      "notes": "Phase8 candidate"
+    }
+  ]
+}

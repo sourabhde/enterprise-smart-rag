@@ -1,0 +1,19 @@
+services:
+  atlasiq:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      GROQ_MODEL: ${GROQ_MODEL:-openai/gpt-oss-120b}
+      ATLASIQ_APP_PASSWORD: ${ATLASIQ_APP_PASSWORD}
+      ATLASIQ_REQUIRE_AUTH: ${ATLASIQ_REQUIRE_AUTH:-1}
+      STREAMLIT_SERVER_ADDRESS: "0.0.0.0"
+      STREAMLIT_SERVER_PORT: "8501"
+    volumes:
+      # Persist vector index across restarts
+      - atlasiq_chroma:/app/chroma_db
+    restart: unless-stopped
+
+volumes:
+  atlasiq_chroma:

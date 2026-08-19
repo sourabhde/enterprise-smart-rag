@@ -1,8 +1,4 @@
-"""AtlasIQ — Sales & CPQ Deal Assistant (Streamlit product UI).
-
-Build better deals. Price them accurately. Create customer-ready quotes.
-Streamlit-native controls only; pipeline behavior unchanged.
-"""
+"""AI Sales Assistant — enterprise Sales & CPQ deal assistant (Streamlit UI)."""
 
 from __future__ import annotations
 
@@ -19,17 +15,27 @@ from atlas.config import config
 from atlas.deploy_readiness import (
     auth_required,
     configured_app_password,
+    configured_app_username,
+    credentials_match,
     friendly_pipeline_error,
-    passwords_match,
     synthetic_corpus_disclaimer,
 )
+from atlas.embeddings import embedding_load_error, get_embedding_model
 from atlas.ingest import discover_markdown_files
 from atlas.pipeline import PipelineResult, answer_query
 from atlas.store import collection_count, index_corpus
 from atlas.ui_eval import list_candidate_runs, order_runs_for_display, run_authority
 
+PRODUCT_NAME = "AI Sales Assistant"
+PRODUCT_ROLE = "Enterprise Sales & CPQ Assistant"
+PRODUCT_HERO = (
+    "Research customers. Price products. Build deals. Navigate discount policy. Close with confidence — "
+    "every answer is grounded in your company's policy documents for maximum accuracy and correctness."
+)
+PRODUCT_AUDIENCE = "For Sales · RevOps · Deal Desk · CPQ"
+
 st.set_page_config(
-    page_title="AtlasIQ — Sales & CPQ Deal Assistant",
+    page_title=f"{PRODUCT_NAME} — Sales & CPQ",
     page_icon=None,
     layout="wide",
     initial_sidebar_state="expanded",
@@ -63,21 +69,21 @@ if "draft_question" not in st.session_state:
 # Pipeline mode keys stay Grounded/Auto/General; UI shows sales-oriented labels.
 MODE_OPTIONS = ["Grounded", "Auto", "General"]
 MODE_LABELS = {
-    "Grounded": "Approved docs only — deal desk",
-    "Auto": "Docs preferred",
-    "General": "General knowledge",
+    "Grounded": "Use Sales Policy Documents (Strict)",
+    "Auto": "Use Sales Policy Documents (Preferably)",
+    "General": "General Knowledge",
 }
 MODE_OVERVIEW_HELP = (
-    "Controls whether AtlasIQ may answer only from governed Sales & CPQ business knowledge. "
-    "Use Approved docs only for pricing, discounts, and policy that must be auditable."
+    "Controls whether the assistant must answer from governed sales policy documents. "
+    "Use Strict for pricing, discounts, and terms that must be auditable."
 )
 MODE_DETAIL = {
     "Grounded": (
-        "Answers only from indexed Sales & CPQ documents. If evidence is weak or missing, "
-        "AtlasIQ refuses rather than guessing — required for accurate commercial numbers."
+        "Answers only from indexed sales policy documents. If evidence is weak or missing, "
+        "the assistant refuses rather than guessing — required for accurate commercial numbers."
     ),
     "Auto": (
-        "Uses your documents when match strength is good; may fall back to general knowledge. "
+        "Uses sales policy documents when match strength is good; may fall back to general knowledge. "
         "Not recommended for exact list price, discount caps, or SLA figures."
     ),
     "General": (
@@ -174,7 +180,7 @@ NAV_SECTIONS: List[Tuple[str, str, str, List[Tuple[str, str]]]] = [
         [("evidence:signals", "Match strength")],
     ),
     ("quality", "Quality", "quality", []),
-    ("system", "Sales documents", "system", []),
+    ("system", "Sales Policy", "system", []),
 ]
 
 # ---------------------------------------------------------------------------
@@ -226,14 +232,31 @@ section[data-testid="stSidebar"] div[data-testid="stButton"] > button span {
 }
 section[data-testid="stSidebar"] [data-baseweb="select"] *,
 section[data-testid="stSidebar"] [data-baseweb="select"] input { color: #0f172a !important; }
-/* Streamlit’s native sidebar collapse control can be rendered with visibility:hidden.
-   Make it visible so the UI feels “finished” in real demos. */
-button[data-testid="stBaseButton-headerNoPadding"] { visibility: visible !important; }
-.block-container { padding-top: 1rem; padding-bottom: 2rem; max-width: 760px; }
-/* Ask page: let the thread grow with the page; dock the ask form to the viewport bottom */
-body.atl-ask-active .main .block-container,
-.atl-ask-active .main .block-container {
-  padding-bottom: 12rem !important;
+/* Streamlit sidebar collapse / expand controls — force visible in demos */
+[data-testid="stSidebarCollapseButton"],
+[data-testid="stSidebarCollapsedControl"],
+[data-testid="collapsedControl"],
+button[data-testid="stBaseButton-headerNoPadding"],
+button[kind="headerNoPadding"],
+header[data-testid="stHeader"] button {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: inline-flex !important;
+  color: #334155 !important;
+  z-index: 999 !important;
+}
+button[data-testid="stBaseButton-headerNoPadding"] {
+  background-color: #e2e8f0 !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 4px !important;
+  min-width: 2.1rem !important;
+  min-height: 2.1rem !important;
+}
+.block-container {
+  /* Must clear Streamlit’s top header — 1rem caused page titles to clip on every screen */
+  padding-top: 5.5rem !important;
+  padding-bottom: 3rem !important;
+  max-width: 760px;
 }
 .atl-brand { font-family: "IBM Plex Serif", Georgia, serif; font-weight: 600; font-size: 1.4rem;
   color: #f8fafc; margin: 0 0 0.15rem 0; }
@@ -302,9 +325,40 @@ body.atl-ask-active .main .block-container,
   margin: 0;
 }
 .atl-composer div[data-testid="stSelectbox"] label p { font-size: 0.78rem !important; color: #64748b !important; }
+/* Ask composer — dock to viewport bottom at CONTENT height (not full-screen stretch) */
+body.atl-ask-active section.stMain div[data-testid="stForm"],
+body.atl-ask-active section[data-testid="stMain"] div[data-testid="stForm"],
+body.atl-ask-active section.main div[data-testid="stForm"] {
+  position: fixed !important;
+  bottom: 0 !important;
+  top: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: 42vh !important;
+  z-index: 999 !important;
+  background: #f0f2f5 !important;
+  border-top: 1px solid #cbd5e1 !important;
+  box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.08) !important;
+  padding: 0.65rem 1rem 0.85rem !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  flex: none !important;
+  align-self: auto !important;
+}
+body.atl-ask-active section.stMain div[data-testid="stForm"] > div,
+body.atl-ask-active section[data-testid="stMain"] div[data-testid="stForm"] > div {
+  height: auto !important;
+  min-height: 0 !important;
+  flex: none !important;
+}
 .atl-chat-hero {
-  min-height: 36vh; display: flex; flex-direction: column; align-items: center;
-  justify-content: center; text-align: center; padding: 2rem 1rem 1.5rem;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 0.5rem 1rem 6rem;
 }
 .atl-chat-hero h1 {
   font-family: "IBM Plex Serif", Georgia, serif; font-size: 1.75rem; font-weight: 600;
@@ -313,16 +367,20 @@ body.atl-ask-active .main .block-container,
 .atl-chat-hero p { color: #64748b; font-size: 0.95rem; margin: 0; max-width: 36rem; line-height: 1.5; }
 .atl-chat-hero .atl-audience { color: #64748b; margin-top: 0.85rem; }
 .atl-turn-rule { border: none; border-top: 1px solid #e2e8f0; margin: 0.35rem 0 0.85rem 0; }
-/* Dock the ask form to the bottom of the viewport while the thread scrolls */
-div[data-testid="stForm"] {
-  position: sticky;
-  bottom: 0;
-  z-index: 120;
-  background: #f0f2f5;
-  border: none;
-  border-top: 1px solid #cbd5e1;
-  padding: 0.75rem 0 0.9rem 0 !important;
-  margin-top: 0.5rem;
+body.atl-ask-active section.stMain .block-container,
+body.atl-ask-active section[data-testid="stMain"] .block-container,
+body.atl-ask-active section.main .block-container {
+  padding-top: 5.5rem !important;
+  padding-bottom: 15rem !important;
+  max-width: 760px;
+}
+body.atl-ask-active .atl-footer { display: none !important; }
+.atl-ask-title {
+  font-family: "IBM Plex Serif", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0 0 0.75rem 0;
 }
 section[data-testid="stSidebar"] div[data-testid="stButton"] > button[kind="primary"] {
   background: #134e4a !important;
@@ -336,6 +394,14 @@ section[data-testid="stSidebar"] div[data-testid="stButton"] > button[kind="prim
 
 
 # ---------------------------------------------------------------------------
+# Helpers (needed before auth UI)
+# ---------------------------------------------------------------------------
+
+def _esc(value: Any) -> str:
+    return html.escape("" if value is None else str(value), quote=True)
+
+
+# ---------------------------------------------------------------------------
 # Auth
 # ---------------------------------------------------------------------------
 
@@ -346,40 +412,69 @@ def _secrets_password() -> Optional[str]:
         return None
 
 
+def _secrets_username() -> Optional[str]:
+    try:
+        return st.secrets.get("username")  # type: ignore[attr-defined]
+    except Exception:  # noqa: BLE001
+        return None
+
+
 _app_password = configured_app_password(secrets_password=_secrets_password())
-_need_auth = auth_required(password=_app_password)
+_app_username = configured_app_username(secrets_username=_secrets_username())
+# Local review fallback — replace before any public URL.
+_demo_auth = not _app_password and not auth_required(password=None)
+if _demo_auth:
+    _app_username = "demo"
+    _app_password = "demo"
+_need_auth = bool(_app_password) or auth_required(password=_app_password)
 
 if _need_auth:
     if not _app_password:
-        st.error("Password required but not configured (ATLASIQ_APP_PASSWORD).")
+        st.error("Login is enabled but no password is configured (ATLASIQ_APP_PASSWORD).")
         st.stop()
     if not st.session_state.authenticated:
-        st.markdown('<p class="atl-page-title">AtlasIQ</p>', unsafe_allow_html=True)
+        st.markdown(f'<p class="atl-page-title">{_esc(PRODUCT_NAME)}</p>', unsafe_allow_html=True)
         st.markdown(
-            '<p class="atl-page-sub" style="margin-top:-0.25rem;"><strong>Sales &amp; CPQ Deal Assistant</strong></p>',
+            f'<p class="atl-page-sub" style="margin-top:-0.25rem;"><strong>{_esc(PRODUCT_ROLE)}</strong></p>',
             unsafe_allow_html=True,
         )
-        st.caption(
-            "Build better deals. Price them accurately. Create customer-ready quotes. Close with confidence."
-        )
+        st.caption(PRODUCT_HERO)
+        if _demo_auth:
+            st.warning(
+                "Demo login for local review only: username `demo`, password `demo`. "
+                "Set ATLASIQ_APP_USERNAME / ATLASIQ_APP_PASSWORD before publishing."
+            )
         with st.form("auth_form"):
-            pw = st.text_input("Password", type="password")
-            if st.form_submit_button("Continue", type="primary"):
-                if passwords_match(pw, _app_password):
+            user = st.text_input("Username", value="", autocomplete="username")
+            pw = st.text_input("Password", type="password", autocomplete="current-password")
+            if st.form_submit_button("Sign in", type="primary"):
+                if credentials_match(
+                    user,
+                    pw,
+                    expected_username=_app_username,
+                    expected_password=_app_password,
+                ):
                     st.session_state.authenticated = True
                     st.rerun()
-                st.error("Incorrect password.")
+                st.error("Incorrect username or password.")
         st.stop()
 else:
     st.session_state.authenticated = True
 
 
+@st.cache_resource(show_spinner="Loading document search model…")
+def _warm_embedding_model() -> bool:
+    """Load MiniLM once per process so retrieval works on first question."""
+    get_embedding_model.cache_clear()
+    return get_embedding_model() is not None
+
+
+_embedding_ready = _warm_embedding_model()
+
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
-
-def _esc(value: Any) -> str:
-    return html.escape("" if value is None else str(value), quote=True)
 
 
 def _fmt_pct(value: Any) -> str:
@@ -430,6 +525,68 @@ def render_evidence_table(chunks: List[Dict[str, Any]]) -> None:
         for ch in chunks
     ]
     st.dataframe(rows, use_container_width=True, hide_index=True)
+
+
+def _turn_label(question: str, index: int) -> str:
+    q = (question or "").strip()
+    if len(q) <= 88:
+        return f"#{index + 1} · {q}"
+    return f"#{index + 1} · {q[:85]}…"
+
+
+def render_turn_evidence(question: str, payload: Dict[str, Any], *, expanded: bool) -> None:
+    with st.expander(_turn_label(question, payload.get("_turn_index", 0)), expanded=expanded):
+        st.markdown(_trust_banner(payload), unsafe_allow_html=True)
+        chunks = payload.get("chunks") or []
+        if not chunks:
+            st.caption("No document passages retained for this response.")
+            return
+        st.markdown("##### Documents found vs cited")
+        render_evidence_table(chunks)
+        st.markdown("##### Passage text")
+        for ch in chunks:
+            used_flag = "Cited in answer" if ch.get("used") else "Found only"
+            with st.expander(
+                f"#{ch['rank']}  {ch['source']} · {used_flag}",
+                expanded=bool(ch.get("used")),
+            ):
+                st.caption(
+                    f"Match {ch['combined_score']:.4f} · area={ch.get('domain') or '—'}"
+                )
+                st.markdown(
+                    f'<div class="atl-chunk">{_esc(ch.get("text") or "")}</div>',
+                    unsafe_allow_html=True,
+                )
+
+
+def render_turn_signals(question: str, payload: Dict[str, Any], *, expanded: bool) -> None:
+    with st.expander(_turn_label(question, payload.get("_turn_index", 0)), expanded=expanded):
+        score = payload.get("max_combined_score")
+        thr = payload.get("similarity_threshold")
+        metrics_with_info(
+            [
+                (
+                    "Best match",
+                    f"{score:.3f}" if score is not None else "—",
+                    "Strongest document match for this question.",
+                ),
+                (
+                    "Refuse below",
+                    f"{thr}" if thr is not None else "—",
+                    "Minimum match strength required before the assistant will confirm an answer.",
+                ),
+                (
+                    "Citations",
+                    str(len(payload.get("citations") or [])),
+                    "Citation markers in the answer text.",
+                ),
+                (
+                    "Passages",
+                    str(len(payload.get("chunks") or [])),
+                    "Document passages retained for audit (see Evidence).",
+                ),
+            ]
+        )
 
 
 def pipeline_to_payload(result: PipelineResult) -> Dict[str, Any]:
@@ -551,7 +708,7 @@ def render_answer_panel(question: str, payload: Dict[str, Any], *, latest: bool 
     elif payload.get("abstained"):
         st.markdown('<p class="atl-step">You asked</p>', unsafe_allow_html=True)
         st.markdown(f'<div class="atl-q-text">{_esc(question)}</div>', unsafe_allow_html=True)
-        st.markdown('<p class="atl-step">Why AtlasIQ will not confirm</p>', unsafe_allow_html=True)
+        st.markdown('<p class="atl-step">Why the assistant will not confirm</p>', unsafe_allow_html=True)
         reason = (
             payload.get("abstention_reason")
             or "Insufficient matching evidence in approved Sales & CPQ documents."
@@ -630,14 +787,13 @@ def nav_toggle(section: str) -> None:
 # ---------------------------------------------------------------------------
 
 with st.sidebar:
-    st.markdown('<p class="atl-brand">AtlasIQ</p>', unsafe_allow_html=True)
+    st.markdown(f'<p class="atl-brand">{_esc(PRODUCT_NAME)}</p>', unsafe_allow_html=True)
     st.markdown(
-        '<p class="atl-brand-role">Sales &amp; CPQ Deal Assistant</p>',
+        f'<p class="atl-brand-role">{_esc(PRODUCT_ROLE)}</p>',
         unsafe_allow_html=True,
     )
     st.markdown(
-        '<p class="atl-brand-sub">Build better deals. Price them accurately. '
-        "Create customer-ready quotes. Close with confidence.</p>",
+        f'<p class="atl-brand-sub">{_esc(PRODUCT_HERO)}</p>',
         unsafe_allow_html=True,
     )
 
@@ -682,23 +838,43 @@ with st.sidebar:
         st.caption(
             f"{stats['doc_count'] or '—'} documents indexed · {stats['chunk_count'] or '—'} passages"
         )
+    if not _embedding_ready:
+        st.caption("Document search model not loaded — run warm_models.py")
     if config.has_groq_api_key:
         st.caption("Ready for Sales, RevOps, Deal Desk &amp; CPQ")
     else:
         st.caption("API key missing — answers unavailable")
 
 page = st.session_state.nav_page
+if page != "ask":
+    components.html(
+        """
+        <script>
+        (function() {
+          const doc = window.parent.document;
+          doc.body.classList.remove('atl-ask-active');
+          doc.querySelectorAll('.atl-ask-active').forEach((el) => el.classList.remove('atl-ask-active'));
+        })();
+        </script>
+        """,
+        height=0,
+    )
 
 # ---------------------------------------------------------------------------
 # ASK — deal-desk Q&A
 # ---------------------------------------------------------------------------
 
 if page == "ask":
-    # Extra bottom padding so the last answer isn't hidden under the sticky ask bar
-    st.markdown(
-        "<style>.main .block-container { padding-bottom: 11rem !important; }</style>",
-        unsafe_allow_html=True,
-    )
+    if not _embedding_ready:
+        err_detail = embedding_load_error() or "unknown load failure"
+        st.error(
+            "Document search is unavailable — the embedding model did not load. "
+            "Stop this app and restart with the project virtualenv:\n\n"
+            "`.venv/bin/streamlit run app.py`\n\n"
+            "Then run once: `python scripts/warm_models.py`"
+        )
+        st.caption(f"Load error: {err_detail}")
+
     turns = st.session_state.turns
     faq_by_id = {s["id"]: s for s in SAMPLE_QUESTIONS}
     faq_ids = ["__none__"] + [s["id"] for s in SAMPLE_QUESTIONS]
@@ -708,17 +884,19 @@ if page == "ask":
             return "Try a sample deal question…"
         return faq_by_id[fid]["question"]
 
-    # Conversation grows with the page (no fixed-height box / no artificial end)
+    # Always keep the product name at the top of Ask so the thread can scroll
+    # from brand → older answers → latest answer above the fixed composer.
+    st.markdown(
+        f'<p class="atl-ask-title">{_esc(PRODUCT_NAME)}</p>',
+        unsafe_allow_html=True,
+    )
     if not turns:
         st.markdown(
-            '<div class="atl-chat-hero">'
-            "<h1>AtlasIQ</h1>"
-            '<p style="font-weight:600;color:#0f766e;margin:0 0 0.65rem 0;">'
-            "Sales &amp; CPQ Deal Assistant</p>"
-            "<p>Structure deals, apply pricing and discount policies, validate commercial terms, "
-            "and generate customer-ready quotes — with every recommendation grounded in "
-            "governed business knowledge.</p>"
-            '<p class="atl-audience">For Sales · RevOps · Deal Desk · CPQ</p>'
+            f'<div class="atl-chat-hero">'
+            f'<p style="font-weight:600;color:#0f766e;margin:0 0 0.65rem 0;">'
+            f"{_esc(PRODUCT_ROLE)}</p>"
+            f"<p>{_esc(PRODUCT_HERO)}</p>"
+            f'<p class="atl-audience">{_esc(PRODUCT_AUDIENCE)}</p>'
             "</div>",
             unsafe_allow_html=True,
         )
@@ -730,55 +908,36 @@ if page == "ask":
                 turn["result"],
                 latest=(i == last_i),
             )
-        # Keep the newest answer in view as the page grows
-        components.html(
-            """
-            <script>
-            (function() {
-              const w = window.parent;
-              const go = () => {
-                try {
-                  w.scrollTo({ top: w.document.body.scrollHeight, behavior: 'smooth' });
-                } catch (e) {}
-              };
-              go();
-              setTimeout(go, 80);
-              setTimeout(go, 250);
-            })();
-            </script>
-            """,
-            height=0,
-        )
 
-    st.markdown('<div class="atl-composer">', unsafe_allow_html=True)
+    scroll_after_answer = bool(st.session_state.pop("_scroll_ask", False))
 
     if st.session_state.pop("faq_pick_reset", False):
         st.session_state.faq_pick = "__none__"
     if "faq_pick" not in st.session_state:
         st.session_state.faq_pick = "__none__"
-    faq_col, type_col = st.columns([0.80, 0.20])
-    with faq_col:
-        picked = st.selectbox(
-            "Sample deal questions",
-            faq_ids,
-            format_func=_faq_label,
-            label_visibility="collapsed",
-            key="faq_pick",
-            help="Full sample questions. The italic label on the right is the commercial question type.",
-        )
-    with type_col:
-        if picked != "__none__":
-            st.markdown(
-                f'<p class="atl-faq-type">{_esc(faq_by_id[picked]["type"])}</p>',
-                unsafe_allow_html=True,
-            )
-        else:
-            st.markdown(
-                '<p class="atl-faq-type" style="opacity:0.35;">type</p>',
-                unsafe_allow_html=True,
-            )
 
     with st.form("ask_form", clear_on_submit=True):
+        faq_col, type_col = st.columns([0.80, 0.20])
+        with faq_col:
+            picked = st.selectbox(
+                "Sample deal questions",
+                faq_ids,
+                format_func=_faq_label,
+                label_visibility="collapsed",
+                key="faq_pick",
+                help="Full sample questions. The italic label on the right is the commercial question type.",
+            )
+        with type_col:
+            if picked != "__none__":
+                st.markdown(
+                    f'<p class="atl-faq-type">{_esc(faq_by_id[picked]["type"])}</p>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown(
+                    '<p class="atl-faq-type" style="opacity:0.35;">type</p>',
+                    unsafe_allow_html=True,
+                )
         question = st.text_area(
             "Question",
             value="",
@@ -799,30 +958,111 @@ if page == "ask":
                 label_visibility="collapsed",
             )
         with send_col:
-            submitted = st.form_submit_button("Ask AtlasIQ", type="primary", use_container_width=True)
+            submitted = st.form_submit_button("Ask", type="primary", use_container_width=True)
 
-    st.markdown("</div>", unsafe_allow_html=True)
+    # Align Ask bar to the main content column (not the full section under the sidebar).
+    # Only auto-scroll after a new answer — never lock the user from scrolling to the top.
+    components.html(
+        f"""
+        <script>
+        (function() {{
+          const w = window.parent;
+          const doc = w.document;
+          const SHOULD_SCROLL = {str(scroll_after_answer).lower()};
+          const activate = () => {{
+            doc.body.classList.add('atl-ask-active');
+            const main = doc.querySelector('section.stMain, section[data-testid="stMain"], section.main');
+            if (main) main.classList.add('atl-ask-active');
+          }};
+          const findForm = () => doc.querySelector(
+            'section.stMain div[data-testid="stForm"], section[data-testid="stMain"] div[data-testid="stForm"], section.main div[data-testid="stForm"]'
+          );
+          const findColumn = () => doc.querySelector(
+            'section.stMain div.stMainBlockContainer, section.stMain div.block-container, section[data-testid="stMain"] div.block-container'
+          );
+          const scrollParent = (el) => {{
+            let p = el ? el.parentElement : null;
+            while (p && p !== doc.body) {{
+              const style = w.getComputedStyle(p);
+              if ((style.overflowY === 'auto' || style.overflowY === 'scroll') && p.scrollHeight > p.clientHeight + 4) {{
+                return p;
+              }}
+              p = p.parentElement;
+            }}
+            return doc.scrollingElement || doc.documentElement;
+          }};
+          const pin = () => {{
+            activate();
+            const col = findColumn();
+            const form = findForm();
+            if (!col || !form) return;
+            const rect = col.getBoundingClientRect();
+            const left = Math.round(rect.left);
+            const width = Math.round(rect.width);
+            form.style.setProperty('position', 'fixed', 'important');
+            form.style.setProperty('bottom', '0px', 'important');
+            form.style.setProperty('top', 'auto', 'important');
+            form.style.setProperty('left', left + 'px', 'important');
+            form.style.setProperty('width', width + 'px', 'important');
+            form.style.setProperty('right', 'auto', 'important');
+            form.style.setProperty('height', 'auto', 'important');
+            form.style.setProperty('min-height', '0', 'important');
+            form.style.setProperty('max-height', '40vh', 'important');
+            form.style.setProperty('z-index', '999', 'important');
+            form.style.setProperty('background', '#f0f2f5', 'important');
+            form.style.setProperty('margin', '0', 'important');
+            form.style.setProperty('flex', 'none', 'important');
+            form.style.removeProperty('inset');
+          }};
+          const scrollLatest = () => {{
+            if (!SHOULD_SCROLL) return;
+            const anchor = doc.getElementById('atl-latest-turn');
+            const form = findForm();
+            if (!anchor) return;
+            const scroller = scrollParent(anchor);
+            const formH = form ? form.getBoundingClientRect().height : 220;
+            const anchorTop = anchor.getBoundingClientRect().top;
+            const scrollerTop = scroller === doc.scrollingElement || scroller === doc.documentElement
+              ? 0
+              : scroller.getBoundingClientRect().top;
+            const delta = anchorTop - scrollerTop - 24;
+            const next = Math.max(0, scroller.scrollTop + delta);
+            // Keep latest answer visible above the fixed Ask bar; do not force block:start
+            // which clips the top of the thread under the header.
+            const maxScroll = Math.max(0, scroller.scrollHeight - scroller.clientHeight - formH);
+            scroller.scrollTo({{ top: Math.min(next, maxScroll), behavior: 'smooth' }});
+          }};
+          pin();
+          w.addEventListener('resize', pin);
+          setTimeout(pin, 50);
+          setTimeout(pin, 250);
+          if (SHOULD_SCROLL) {{
+            setTimeout(scrollLatest, 180);
+            setTimeout(scrollLatest, 400);
+          }}
+        }})();
+        </script>
+        """,
+        height=0,
+    )
 
     if submitted:
         st.session_state.ui_mode = form_mode
         if picked != "__none__":
             run_question(faq_by_id[picked]["question"])
             st.session_state.faq_pick_reset = True
+            st.session_state._scroll_ask = True
             st.rerun()
         elif question.strip():
             run_question(question.strip())
+            st.session_state._scroll_ask = True
             st.rerun()
-
-    st.markdown(
-        f'<p class="atl-disclaimer">{_esc(synthetic_corpus_disclaimer())}</p>',
-        unsafe_allow_html=True,
-    )
 
 elif page == "ask:settings":
     st.markdown('<p class="atl-page-title">Answer policy</p>', unsafe_allow_html=True)
     st.markdown(
-        '<p class="atl-page-sub">How strictly AtlasIQ must stick to governed Sales &amp; CPQ '
-        "business knowledge on the next question.</p>",
+        f'<p class="atl-page-sub">How strictly {PRODUCT_NAME} must stick to governed sales '
+        "policy documents on the next question.</p>",
         unsafe_allow_html=True,
     )
 
@@ -852,7 +1092,7 @@ elif page == "ask:settings":
         2.0,
         float(st.session_state.ui_threshold),
         0.05,
-        help="If the best document match is below this, AtlasIQ will not confirm a commercial answer.",
+        help="If the best document match is below this, the assistant will not confirm a commercial answer.",
     )
 
     st.markdown("##### Match quality")
@@ -870,75 +1110,44 @@ elif page == "ask:settings":
 elif page == "evidence":
     st.markdown('<p class="atl-page-title">Evidence</p>', unsafe_allow_html=True)
     st.markdown(
-        '<p class="atl-page-sub">Audit trail for the latest answer — which Sales &amp; CPQ documents '
-        "were found, and which ones were cited.</p>",
+        '<p class="atl-page-sub">Session audit trail — which Sales &amp; CPQ documents '
+        "were found and cited for each question you asked.</p>",
         unsafe_allow_html=True,
     )
-    payload = st.session_state.last_result
-    question = st.session_state.last_question
-    if not payload:
-        st.info("Ask a deal question first, then return here to audit sources.")
+    turns = st.session_state.turns
+    if not turns:
+        st.info("Ask a question first, then return here to audit sources.")
     else:
-        if question:
-            st.markdown(f"**Question under review**  \n{_esc(question)}")
-        chunks = payload.get("chunks") or []
-        if not chunks:
-            st.caption("No document passages retained for this response.")
-        else:
-            st.markdown("##### Documents found vs cited")
-            render_evidence_table(chunks)
-            st.markdown("##### Passage text")
-            for ch in chunks:
-                used_flag = "Cited in answer" if ch.get("used") else "Found only"
-                with st.expander(
-                    f"#{ch['rank']}  {ch['source']} · {used_flag}",
-                    expanded=bool(ch.get("used")),
-                ):
-                    st.caption(
-                        f"Match {ch['combined_score']:.4f} · area={ch.get('domain') or '—'}"
-                    )
-                    st.markdown(
-                        f'<div class="atl-chunk">{_esc(ch.get("text") or "")}</div>',
-                        unsafe_allow_html=True,
-                    )
+        st.caption(f"{len(turns)} question(s) in this session")
+        for i, turn in enumerate(reversed(turns)):
+            payload = dict(turn["result"])
+            payload["_turn_index"] = len(turns) - 1 - i
+            render_turn_evidence(
+                turn["question"],
+                payload,
+                expanded=(i == 0),
+            )
 
 elif page == "evidence:signals":
     st.markdown('<p class="atl-page-title">Match strength</p>', unsafe_allow_html=True)
     st.markdown(
-        '<p class="atl-page-sub">How strongly documents matched the latest question — '
+        '<p class="atl-page-sub">How strongly documents matched each question in this session — '
         "not the product-wide Quality benchmark.</p>",
         unsafe_allow_html=True,
     )
-    payload = st.session_state.last_result
-    if not payload:
-        st.info("Ask a deal question first.")
+    turns = st.session_state.turns
+    if not turns:
+        st.info("Ask a question first.")
     else:
-        score = payload.get("max_combined_score")
-        thr = payload.get("similarity_threshold")
-        metrics_with_info(
-            [
-                (
-                    "Best match",
-                    f"{score:.3f}" if score is not None else "—",
-                    "Strongest document match for this question.",
-                ),
-                (
-                    "Refuse below",
-                    f"{thr}" if thr is not None else "—",
-                    "Minimum match strength required before AtlasIQ will confirm an answer.",
-                ),
-                (
-                    "Citations",
-                    str(len(payload.get("citations") or [])),
-                    "Citation markers in the answer text.",
-                ),
-                (
-                    "Passages",
-                    str(len(payload.get("chunks") or [])),
-                    "Document passages retained for audit (see Evidence).",
-                ),
-            ]
-        )
+        st.caption(f"{len(turns)} question(s) in this session")
+        for i, turn in enumerate(reversed(turns)):
+            payload = dict(turn["result"])
+            payload["_turn_index"] = len(turns) - 1 - i
+            render_turn_signals(
+                turn["question"],
+                payload,
+                expanded=(i == 0),
+            )
 
 # ---------------------------------------------------------------------------
 # QUALITY — frozen release benchmark (not live usage)
@@ -1045,10 +1254,14 @@ elif page == "quality":
 # ---------------------------------------------------------------------------
 
 elif page == "system":
-    st.markdown('<p class="atl-page-title">Sales documents</p>', unsafe_allow_html=True)
+    st.markdown('<p class="atl-page-title">Sales Policy</p>', unsafe_allow_html=True)
     st.markdown(
-        '<p class="atl-page-sub">Governed business knowledge AtlasIQ uses to price deals, '
+        f'<p class="atl-page-sub">Governed business knowledge {PRODUCT_NAME} uses to price deals, '
         "apply discount policy, and validate commercial terms.</p>",
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        f'<p class="atl-disclaimer">{_esc(synthetic_corpus_disclaimer())}</p>',
         unsafe_allow_html=True,
     )
     stats = get_index_stats()
@@ -1076,10 +1289,10 @@ elif page == "system":
         f"{'Enabled' if config.cache.enabled else 'Disabled'} · refresh after {ttl_label} · "
         f"max {config.cache.max_entries} entries. "
         "Repeating the same question within the window reuses the last confirmed answer; "
-        "re-syncing Sales documents clears the cache so numbers cannot go stale."
+        "re-syncing Sales Policy clears the cache so numbers cannot go stale."
     )
-    if st.button("Re-sync Sales documents", type="primary"):
-        with st.spinner("Updating Sales documents index…"):
+    if st.button("Re-sync Sales Policy", type="primary"):
+        with st.spinner("Updating Sales Policy index…"):
             try:
                 upserted, final_count = index_corpus()
                 st.success(
@@ -1088,8 +1301,8 @@ elif page == "system":
             except Exception as exc:  # noqa: BLE001
                 st.error(str(exc))
 
-st.markdown(
-    '<div class="atl-footer">AtlasIQ · Sales &amp; CPQ Deal Assistant · '
-    "evidence-backed pricing, policy, and quotes</div>",
-    unsafe_allow_html=True,
-)
+if page != "ask":
+    st.markdown(
+        f'<div class="atl-footer">{_esc(PRODUCT_NAME)} · evidence-backed pricing, policy, and quotes</div>',
+        unsafe_allow_html=True,
+    )

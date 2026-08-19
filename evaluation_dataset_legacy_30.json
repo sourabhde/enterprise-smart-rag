@@ -1,0 +1,182 @@
+[
+  {
+    "id": "test_case_001",
+    "question": "What is the cost of adding additional user seats beyond the base platform allowance for Module 8?",
+    "expected_context": "The Base Platform Subscription includes 25 named users. Additional seats are billed at $1,400 per user/year.",
+    "source": "corpus/skus/product_tier_08.md"
+  },
+  {
+    "id": "test_case_002",
+    "question": "What are the rate limits and pricing for Tier 2 Volume API usage?",
+    "expected_context": "Volume API Tier 2 covers 15M to 50M calls/month and is billed at $0.00012 per request.",
+    "source": "corpus/skus/product_tier_08.md"
+  },
+  {
+    "id": "test_case_003",
+    "question": "What discount and renewal conditions apply to multi-year contracts for Module 8?",
+    "expected_context": "Multi-year commitments of 36 months qualify for a 12% total contract value (TCV) reduction, with automatic annual renewal subject to a standard 4% inflation adjustment cap.",
+    "source": "corpus/skus/product_tier_08.md"
+  },
+  {
+    "id": "test_case_004",
+    "question": "What is the annual base subscription fee for Module 12, and what user seat entitlement is included?",
+    "expected_context": "The base platform subscription is $53,000 per year and includes 25 named user seats. Additional seats are billed at $1,600 per user/year.",
+    "source": "corpus/skus/product_tier_12.md"
+  },
+  {
+    "id": "test_case_005",
+    "question": "What are the specific volume tiers and overage rates for API usage in Module 12?",
+    "expected_context": "Tier 1 (0 - 15M calls/mo) is included in the base fee; Tier 2 (15M - 50M calls/mo) costs $0.00012 per request; Tier 3 (50M+ calls/mo) requires custom enterprise rider approval.",
+    "source": "corpus/skus/product_tier_12.md"
+  },
+  {
+    "id": "test_case_006",
+    "question": "What contract discount is applied for a 36-month commitment, and what is the standard renewal inflation cap?",
+    "expected_context": "Multi-year commitments of 36 months qualify for a 12% total contract value (TCV) reduction, and automatic annual renewals have a standard 4% inflation adjustment cap.",
+    "source": "corpus/skus/product_tier_12.md"
+  },
+  {
+    "id": "test_case_007",
+    "question": "What is the annual base subscription cost for Module 17 and how many named users are included?",
+    "expected_context": "Base Platform Subscription: $60,500 / year. Included User Seats: 25 named users.",
+    "source": "corpus/skus/product_tier_17.md"
+  },
+  {
+    "id": "test_case_008",
+    "question": "What are the pricing rules and thresholds for Tier 2 and Tier 3 Volume API usage?",
+    "expected_context": "Volume API Tiering: Tier 2 (15M - 50M calls/mo): $0.00012 per request. Tier 3 (50M+ calls/mo): Requires custom enterprise rider approval.",
+    "source": "corpus/skus/product_tier_17.md"
+  },
+  {
+    "id": "test_case_009",
+    "question": "What discount and contract length conditions apply for multi-year commitments under the contractual terms?",
+    "expected_context": "Multi-year commitments of 36 months qualify for a 12% total contract value (TCV) reduction.",
+    "source": "corpus/skus/product_tier_17.md"
+  },
+  {
+    "id": "test_case_010",
+    "question": "What is the annual base subscription cost for Module 13, and what are the terms for additional user seats beyond the included allocation?",
+    "expected_context": "The Base Platform Subscription is $54,500 / year and includes 25 named users. Additional user seats are billed at $1,650 per user/year.",
+    "source": "corpus/skus/product_tier_13.md"
+  },
+  {
+    "id": "test_case_011",
+    "question": "What are the specific volume thresholds and associated pricing structures across the three API tiers?",
+    "expected_context": "Tier 1 (0 - 15M calls/mo) is included in the base fee. Tier 2 (15M - 50M calls/mo) is billed at $0.00012 per request. Tier 3 (50M+ calls/mo) requires custom enterprise rider approval.",
+    "source": "corpus/skus/product_tier_13.md"
+  },
+  {
+    "id": "test_case_012",
+    "question": "What contract terms apply to annual renewals and 36-month multi-year commitments under Module 13?",
+    "expected_context": "Contracts feature an automatic annual renewal with a standard 4% inflation adjustment cap, and multi-year commitments of 36 months qualify for a 12% total contract value (TCV) reduction.",
+    "source": "corpus/skus/product_tier_13.md"
+  },
+  {
+    "id": "test_case_013",
+    "question": "What is the annual base subscription cost for Module 10, how many user seats are included, and what is the cost for each additional seat?",
+    "expected_context": "Base Platform Subscription: $50,000 / year. Included User Seats: 25 named users. Additional seats billed at $1500 per user/year.",
+    "source": "corpus/skus/product_tier_10.md"
+  },
+  {
+    "id": "test_case_014",
+    "question": "What are the rate limits and pricing details for Tier 2 and Tier 3 Volume API calls under Module 10?",
+    "expected_context": "Tier 2 (15M - 50M calls/mo): $0.00012 per request. Tier 3 (50M+ calls/mo): Requires custom enterprise rider approval.",
+    "source": "corpus/skus/product_tier_10.md"
+  },
+  {
+    "id": "test_case_015",
+    "question": "What discount applies to a 36-month multi-year commitment, and what is the standard inflation adjustment cap upon annual renewal?",
+    "expected_context": "Automatic annual renewal with a standard 4% inflation adjustment cap. Multi-year commitments of 36 months qualify for a 12% total contract value (TCV) reduction.",
+    "source": "corpus/skus/product_tier_10.md"
+  },
+  {
+    "id": "test_case_016",
+    "question": "What is the cost of the Base Platform Subscription and how many user seats are included?",
+    "expected_context": "Base Platform Subscription: $36,500 / year. Included User Seats: 25 named users. Additional seats billed at $1050 per user/year.",
+    "source": "corpus/skus/product_tier_01.md"
+  },
+  {
+    "id": "test_case_017",
+    "question": "What are the call volume thresholds and pricing conditions for API Tier 2 and Tier 3?",
+    "expected_context": "Tier 2 (15M - 50M calls/mo): $0.00012 per request. Tier 3 (50M+ calls/mo): Requires custom enterprise rider approval.",
+    "source": "corpus/skus/product_tier_01.md"
+  },
+  {
+    "id": "test_case_018",
+    "question": "What discount applies to a 36-month multi-year commitment, and what is the inflation adjustment cap on renewals?",
+    "expected_context": "Automatic annual renewal with a standard 4% inflation adjustment cap. Multi-year commitments of 36 months qualify for a 12% total contract value (TCV) reduction.",
+    "source": "corpus/skus/product_tier_01.md"
+  },
+  {
+    "id": "test_case_019",
+    "question": "What is the base platform subscription cost and how many named users are included in Module 11?",
+    "expected_context": "The Base Platform Subscription is $51,500 / year, which includes 25 named users. Additional seats are billed at $1550 per user/year.",
+    "source": "corpus/skus/product_tier_11.md"
+  },
+  {
+    "id": "test_case_020",
+    "question": "What are the pricing rules and tiers for volume API requests in Module 11?",
+    "expected_context": "Volume API Tiering is structured as: Tier 1 (0 - 15M calls/mo) is included in the base fee; Tier 2 (15M - 50M calls/mo) is billed at $0.00012 per request; Tier 3 (50M+ calls/mo) requires custom enterprise rider approval.",
+    "source": "corpus/skus/product_tier_11.md"
+  },
+  {
+    "id": "test_case_021",
+    "question": "What discount and renewal terms apply to multi-year contracts under Module 11?",
+    "expected_context": "Contracts feature automatic annual renewal with a standard 4% inflation adjustment cap. Multi-year commitments of 36 months qualify for a 12% total contract value (TCV) reduction.",
+    "source": "corpus/skus/product_tier_11.md"
+  },
+  {
+    "id": "test_case_022",
+    "question": "What approval level and documentation are required for discounts ranging from 10% to 22%?",
+    "expected_context": "Regional Sales Director: Authority to approve discounts between 10% and 22%. Requires signed justification memo.",
+    "source": "corpus/policies/discount_matrix_policy_04.md"
+  },
+  {
+    "id": "test_case_023",
+    "question": "Under what conditions is an Executive Committee review required according to the Delegation of Authority matrix?",
+    "expected_context": "Executive Committee (CRO/CEO): Any discount exceeding 30% or containing non-standard indemnification requires board-level review.",
+    "source": "corpus/policies/discount_matrix_policy_04.md"
+  },
+  {
+    "id": "test_case_024",
+    "question": "What is the consequence of failing to log discount rationales in the CPQ audit ledger within the mandated timeframe?",
+    "expected_context": "Failure to log discount rationales in the CPQ audit ledger within 24 hours results in commission forfeiture for the deal cycle.",
+    "source": "corpus/policies/discount_matrix_policy_04.md"
+  },
+  {
+    "id": "test_case_025",
+    "question": "What is the maximum discretionary discount an Account Executive can approve without higher authorization under Framework 10?",
+    "expected_context": "Account Executive: Maximum discretionary discount of up to 9% off list price.",
+    "source": "corpus/policies/discount_matrix_policy_10.md"
+  },
+  {
+    "id": "test_case_026",
+    "question": "What conditions and approval levels are required for a discount between 10% and 18%?",
+    "expected_context": "Regional Sales Director: Authority to approve discounts between 10% and 18%. Requires signed justification memo.",
+    "source": "corpus/policies/discount_matrix_policy_10.md"
+  },
+  {
+    "id": "test_case_027",
+    "question": "What is the compliance penalty for failing to log discount rationales in the CPQ audit ledger within 24 hours?",
+    "expected_context": "Failure to log discount rationales in the CPQ audit ledger within 24 hours results in commission forfeiture for the deal cycle.",
+    "source": "corpus/policies/discount_matrix_policy_10.md"
+  },
+  {
+    "id": "test_case_028",
+    "question": "What is the committed monthly uptime availability percentage for production workloads deployed in Region 01?",
+    "expected_context": "Vendor commits to a monthly uptime availability of 99.10% for all production workloads deployed under Region 01.",
+    "source": "corpus/legal/sla_agreement_region_01.md"
+  },
+  {
+    "id": "test_case_029",
+    "question": "What service credit and remedy does the client receive if availability drops below 95.0%?",
+    "expected_context": "Availability below 95.0%: 50% credit of monthly MRR plus termination rights.",
+    "source": "corpus/legal/sla_agreement_region_01.md"
+  },
+  {
+    "id": "test_case_030",
+    "question": "What is the aggregate liability cap defined for Region 01 contracts?",
+    "expected_context": "Aggregate liability for Region 01 contracts is strictly capped at 100% of fees paid during the preceding twelve (12) months.",
+    "source": "corpus/legal/sla_agreement_region_01.md"
+  }
+]

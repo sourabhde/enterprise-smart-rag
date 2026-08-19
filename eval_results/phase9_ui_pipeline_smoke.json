@@ -1,0 +1,25 @@
+{
+  "checks": [
+    {
+      "name": "grounded_module12",
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "fw99_abstain",
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "acme_abstain",
+      "ok": true,
+      "error": null
+    },
+    {
+      "name": "underspec_abstain",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "pass": true
+}
